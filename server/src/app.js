@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 
 app.get("/", async (req, res) => {
-  const data = await pokemon.set.all()
+  const data = await pokemon.set.all();
   res.send(data);
 });
 
