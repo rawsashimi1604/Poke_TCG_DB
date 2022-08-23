@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.js"
+    "start": "nodemon src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "express": "^4.18.1"
   },
   "devDependencies": {
+    "nodemon": "^2.0.19",
     "pokemontcgsdk": "^2.0.0"
   }
 }
