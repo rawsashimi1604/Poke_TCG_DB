@@ -9,14 +9,19 @@ const pool = new pg.Pool({
   port: 5432,
 });
 
-const addToTest = () => {
-  pool.query(
+const addToTest = (name) => {
+  return pool.query(
     `INSERT INTO test (name) VALUES ($1)`,
-    ["Charizard"],
+    [name],
     (err, results) => {
       if (err) throw err;
+      return results;
     }
   );
 };
 
-addToTest();
+const getTest = async () => {
+  return pool.query("SELECT * FROM test");
+};
+
+export default { addToTest, getTest };
