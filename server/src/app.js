@@ -22,7 +22,7 @@ app.get("/testget", async (req, res) => {
 });
 
 app.get("/getset", async (req, res) => {
-  const data = await pokemon.card.all({ q: "set.name:base" });
+  const data = await pokemon.card.all({ q: "set.id:base1" });
   console.log("Got data from specific set...");
   res.send(data);
 });

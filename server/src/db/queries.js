@@ -1,16 +1,8 @@
 import envConfig from "../envConfig.js";
-import pg from "pg";
-
-const pool = new pg.Pool({
-  user: "loowe",
-  host: "localhost",
-  database: "poke_tcg_db",
-  password: envConfig.DB_PASSWORD,
-  port: 5432,
-});
+import db from "./dbConfig.js";
 
 const addToTest = (name) => {
-  return pool.query(
+  return db.query(
     `INSERT INTO test (name) VALUES ($1)`,
     [name],
     (err, results) => {
@@ -21,7 +13,7 @@ const addToTest = (name) => {
 };
 
 const getTest = async () => {
-  return pool.query("SELECT * FROM test");
+  return db.query("SELECT * FROM supertype");
 };
 
 export default { addToTest, getTest };

@@ -12,8 +12,14 @@ CREATE TABLE supertype (
 INSERT INTO supertype (supertype_id, supertype)
 VALUES 
   (1, 'Energy'),
-  (2, 'Pokemon'),
+  (2, 'Pokémon'),
   (3, 'Trainer');
+
+CREATE TABLE rarity (
+  rarity_id INT PRIMARY KEY,
+  rarity VARCHAR(50) NOT NULL
+);
+
 
 CREATE TABLE card_set (
   set_id VARCHAR(100) PRIMARY KEY,
@@ -32,23 +38,33 @@ CREATE TABLE card_set (
       REFERENCES legality(legality_id)
 );
 
+
 CREATE TABLE card (
   card_id VARCHAR(50) PRIMARY KEY,
   card_name VARCHAR(100) NOT NULL,
-  number INT NOT NULL,
+  number VARCHAR(50) NOT NULL,
   artist VARCHAR(100),
-  rarity VARCHAR(100),
-  pokedex_id INT,
   small_img VARCHAR(200) NOT NULL,
   large_img VARCHAR(200) NOT NULL,
   supertype_id INT NOT NULL,
   set_id VARCHAR(100) NOT NULL,
+  rarity_id INT,
   CONSTRAINT fk_supertype
     FOREIGN KEY(supertype_id)
       REFERENCES supertype(supertype_id),
   CONSTRAINT fk_set
     FOREIGN KEY(set_id)
-      REFERENCES card_set(set_id)  
+      REFERENCES card_set(set_id),  
+  CONSTRAINT fk_rarity
+    FOREIGN KEY(rarity_id)
+      REFERENCES rarity(rarity_id)  
+);
+
+
+CREATE TABLE pokedex_card (
+  card_id VARCHAR(50) REFERENCES card(card_id) NOT NULL,
+  pokedex_id INT NOT NULL,
+  PRIMARY KEY (card_id, pokedex_id)
 );
 
 CREATE TABLE tcg_player (
@@ -65,3 +81,29 @@ CREATE TABLE tcg_player (
     FOREIGN KEY(card_id)
       REFERENCES card(card_id)
 );
+
+
+-- SELECT * FROM supertype;
+-- SELECT * FROM rarity;
+
+-- ALTER TABLE card ALTER COLUMN rarity_id DROP NOT NULL;
+-- ALTER TABLE card DROP COLUMN pokedex_id;
+
+-- DELETE FROM card_set;
+-- DELETE FROM legality;
+-- DELETE FROM supertype;
+
+DELETE FROM pokedex_card;
+DELETE FROM tcg_player;
+DELETE FROM card; 
+
+-- SELECT set_id FROM card_set WHERE set_id = 'bw3';
+
+
+-- SELECT * FROM card_set WHERE set_id LIKE '%base%';
+
+SELECT * FROM card_set WHERE set_id LIKE '%swsh%';
+
+SELECT * FROM card;
+SELECT * FROM pokedex_card;
+SELECT * FROM tcg_player;
