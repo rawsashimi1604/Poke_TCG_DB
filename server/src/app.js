@@ -5,9 +5,8 @@ import db from "./db/queries.js";
 const app = express();
 const PORT = 3000;
 
-app.get("/", async (req, res) => {
-  const data = await pokemon.set.all();
-  res.send(data);
+app.get("/", (req, res) => {
+  res.send("Hello world!");
 });
 
 app.get("/testadd", async (req, res) => {
@@ -20,6 +19,17 @@ app.get("/testget", async (req, res) => {
   const queryData = await db.getTest();
   console.log(queryData.rows);
   res.send("Get all from TABLE: test");
+});
+
+app.get("/getset", async (req, res) => {
+  const data = await pokemon.card.all({ q: "set.name:base" });
+  console.log("Got data from specific set...");
+  res.send(data);
+});
+
+app.get("/allset", async (req, res) => {
+  const data = await pokemon.set.all();
+  res.send(data);
 });
 
 app.listen(PORT, (e) => {
