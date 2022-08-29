@@ -11,8 +11,8 @@ function Sidebar() {
   ];
 
   return (
-    <aside className="flex flex-col h-screen p-3 shadow w-60 bg-gray-800 text-white">
-      <div className="space-y-1">
+    <aside className="grow-0 flex-shrink-0 p-5 text-xs lg:text-sm border-r h-screen sm:w-52 lg:w-72 hidden sm:inline-flex pb-52 bg-gray-800 text-white">
+      <div className="space-y-1 w-full">
         <div className="flex items-center">
           <h2 className="text-lg font-bold flex items-center gap-1.5">
             <TbPokeball className="text-red-200 w-6 h-6" />

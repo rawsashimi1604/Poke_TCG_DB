@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
-import Layout from "../components/Layout";
-import Sidebar from "../components/Sidebar";
-import Main from "../components/Main";
+import Layout from "../components/layouts/Layout";
+import Sidebar from "../components/layouts/Sidebar";
+import Main from "../components/layouts/Main";
 
 export default function Home() {
   return (
