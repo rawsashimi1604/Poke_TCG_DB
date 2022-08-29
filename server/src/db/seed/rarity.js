@@ -2,7 +2,7 @@
   Seed Pokemon TCG Card rarities using Pokemon TCG API.
 */
 import envConfig from "../../envConfig.js";
-import db from "../dbConfig.js";
+import db from "../../dbConfig.js";
 import pokemon from "pokemontcgsdk";
 import sleep from "../../lib/sleep.js";
 

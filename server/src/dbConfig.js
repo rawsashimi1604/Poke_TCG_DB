@@ -1,4 +1,4 @@
-import envConfig from "../envConfig.js";
+import envConfig from "./envConfig.js";
 import pg from "pg";
 
 export default new pg.Pool({
