@@ -3,7 +3,7 @@ import { SetQuery } from "../db/queries/index.js";
 
 const router = express.Router();
 
-// Middleware that is specific to Card Router..
+// Middleware that is specific to Set Router..
 router.use((req, res, next) => {
   console.log("Set route was triggered.");
   next();

@@ -20,13 +20,18 @@ router.get("/all", async (req, res) => {
   res.send(queryRes.rows);
 });
 
+// Get specific card
+router.get("/:cardId", async (req, res) => {
+  const cardId = req.params.cardId;
+  const queryRes = await CardQuery.getById(cardId);
+  res.send(queryRes.rows);
+});
+
 // Get all cards from specific set...
 router.get("/set/:set", async (req, res) => {
   const setId = req.params.set;
   const queryRes = await CardQuery.getBySet(setId);
   res.send(queryRes.rows);
 });
-
-router.get("/");
 
 export default router;

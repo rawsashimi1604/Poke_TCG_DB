@@ -19,4 +19,14 @@ function getBySet(set) {
   }
 }
 
-export default { getAllCards, getBySet };
+function getById(id) {
+  try {
+    const query = "SELECT * FROM card WHERE card_id = $1";
+    const params = [id];
+    return db.query(query, params);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export default { getAllCards, getBySet, getById };
