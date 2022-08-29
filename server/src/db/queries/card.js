@@ -1,4 +1,3 @@
-import envConfig from "../../envConfig.js";
 import db from "../../dbConfig.js";
 
 function getAllCards() {
@@ -10,8 +9,14 @@ function getAllCards() {
   }
 }
 
-function test() {
-  console.log("Hello world...");
+function getBySet(set) {
+  try {
+    const query = "SELECT * FROM card WHERE set_id = $1";
+    const params = [set];
+    return db.query(query, params);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-export default { getAllCards, test };
+export default { getAllCards, getBySet };
