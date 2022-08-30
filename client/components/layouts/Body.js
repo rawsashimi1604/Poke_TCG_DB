@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import axios from "axios";
+
+import { motion } from "framer-motion";
 
 const NUMBER_OF_CARDS = 50;
 
@@ -30,7 +31,9 @@ function Body({}) {
           return (
             <>
               <motion.div whileHover={{ scale: 1.03 }}>
-                <img src={card.large_img} />
+                <div className="cursor-pointer">
+                  <img src={card.large_img} />
+                </div>
               </motion.div>
             </>
           );

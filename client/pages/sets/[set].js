@@ -12,7 +12,7 @@ function SetPage() {
   return (
     <div className="font-inter">
       <Layout>
-        <SetPageMain />
+        <SetPageMain setId={set} />
       </Layout>
     </div>
   );
