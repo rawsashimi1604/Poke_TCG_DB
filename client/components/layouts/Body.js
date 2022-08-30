@@ -3,6 +3,8 @@ import axios from "axios";
 
 import { motion } from "framer-motion";
 
+import PokeCard from "../components/PokeCard";
+
 const NUMBER_OF_CARDS = 50;
 
 function Body({}) {
@@ -30,11 +32,7 @@ function Body({}) {
         pokeCards.map((card, i) => {
           return (
             <>
-              <motion.div whileHover={{ scale: 1.03 }}>
-                <div className="cursor-pointer">
-                  <img src={card.large_img} />
-                </div>
-              </motion.div>
+              <PokeCard data={card} key={i} />
             </>
           );
         })}

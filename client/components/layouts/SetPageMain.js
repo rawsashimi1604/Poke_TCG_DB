@@ -5,6 +5,8 @@ import { convertTimestampToDate } from "../../lib/timestamp";
 
 import { motion } from "framer-motion";
 
+import PokeCard from "../components/PokeCard";
+
 function SetPageMain({ setId }) {
   const [cards, setCards] = useState(null);
 
@@ -31,11 +33,7 @@ function SetPageMain({ setId }) {
           cards.map((card, i) => {
             return (
               <>
-                <motion.div whileHover={{ scale: 1.03 }}>
-                  <div className="cursor-pointer">
-                    <img src={card.large_img} />
-                  </div>
-                </motion.div>
+                <PokeCard data={card} key={i} />
               </>
             );
           })}
