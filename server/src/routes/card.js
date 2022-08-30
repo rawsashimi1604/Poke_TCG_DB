@@ -16,8 +16,14 @@ router.get("/", (req, res) => {
 
 // Get all cards...
 router.get("/all", async (req, res) => {
-  const queryRes = await CardQuery.getAllCards();
-  res.send(queryRes.rows);
+  if (req.query.quantity) {
+    const qty = req.query.quantity;
+    const queryRes = await CardQuery.getCardsByQuantity(qty);
+    res.send(queryRes.rows);
+  } else {
+    const queryRes = await CardQuery.getAllCards();
+    res.send(queryRes.rows);
+  }
 });
 
 // Get specific card
@@ -31,13 +37,6 @@ router.get("/:cardId", async (req, res) => {
 router.get("/set/:set", async (req, res) => {
   const setId = req.params.set;
   const queryRes = await CardQuery.getBySet(setId);
-  res.send(queryRes.rows);
-});
-
-// Get cards by quantity...
-router.get("/quantity/:qty", async (req, res) => {
-  const qty = req.params.qty;
-  const queryRes = await CardQuery.getCardsByQuantity(qty);
   res.send(queryRes.rows);
 });
 

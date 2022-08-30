@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         inter: ["Inter"],
+        quicksand: ["Quicksand"],
       },
     },
   },

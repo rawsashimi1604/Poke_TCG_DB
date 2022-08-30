@@ -5,7 +5,7 @@ import Body from "./Body";
 
 function Main({}) {
   return (
-    <div className="flex-col space-y-4">
+    <div className="flex-col">
       {/* Section with about info */}
       <Header />
       <Body />
