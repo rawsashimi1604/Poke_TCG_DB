@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import axios from "axios";
 
 const NUMBER_OF_CARDS = 50;
 
-function Body({ pokeData }) {
+function Body({}) {
   const [pokeCards, setPokeCards] = useState(null);
 
   async function fetchPokeCardsData() {
@@ -28,7 +29,9 @@ function Body({ pokeData }) {
         pokeCards.map((card, i) => {
           return (
             <>
-              <img src={card.large_img} />
+              <motion.div whileHover={{ scale: 1.03 }}>
+                <img src={card.large_img} />
+              </motion.div>
             </>
           );
         })}

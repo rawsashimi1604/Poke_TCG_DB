@@ -8,8 +8,6 @@ function Main({}) {
     <div className="flex-col space-y-4 p-6 flex-grow overflow-y-scroll">
       {/* Section with about info */}
       <Header />
-
-      {/*  */}
       <Body />
     </div>
   );

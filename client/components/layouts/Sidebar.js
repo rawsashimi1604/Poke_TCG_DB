@@ -6,8 +6,8 @@ import { TbPokeball } from "react-icons/tb";
 
 function Sidebar() {
   const menuLinkMapping = [
-    { icon: <HomeIcon />, label: "Home", href: "#" },
-    { icon: <CircleStackIcon />, label: "Browse By Set", href: "#" },
+    { icon: <HomeIcon />, label: "Home", href: "/" },
+    { icon: <CircleStackIcon />, label: "Browse By Set", href: "/sets" },
   ];
 
   return (
