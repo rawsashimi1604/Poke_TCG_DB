@@ -39,9 +39,9 @@ async function seedTCGCardsBySet() {
           // Insert into card table...
           const res = await db.query(
             `INSERT INTO card (
-                card_id, set_id, supertype_id, rarity_id, card_name, number, artist, small_img, large_img
+                card_id, set_id, supertype_id, rarity_id, card_name, number, artist, small_img, large_img, hp, flavor_text
               ) VALUES (
-                $1, $2, $3, $4, $5, $6, $7, $8, $9
+                $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11
               ) RETURNING *;
               `,
             [
@@ -54,6 +54,8 @@ async function seedTCGCardsBySet() {
               card.artist,
               card.images.small,
               card.images.large,
+              card.hp || null,
+              card.flavorText || null,
             ]
           );
 
@@ -97,6 +99,38 @@ async function seedTCGCardsBySet() {
               );
 
               // console.log(tcgPlayerRes.rows[0]);
+            }
+          }
+
+          // Insert into card_type table
+          if (card.types) {
+            for (const type of card.types) {
+              // Get type_id from db
+              const type_id = await db.query(
+                "SELECT type_id FROM type WHERE type = $1",
+                [type]
+              );
+
+              // Insert into card_type
+              const cardTypeRes = await db.query(
+                "INSERT INTO card_type (type_id, card_id) VALUES ($1, $2) RETURNING *;",
+                [type_id.rows[0].type_id, res.rows[0].card_id]
+              );
+
+              // console.log(cardTypeRes.rows[0])
+            }
+          }
+
+          // Insert into subtype table
+          if (card.subtypes) {
+            for (const subtype of card.subtypes) {
+              // Insert
+              const subtypeRes = await db.query(
+                "INSERT INTO subtype (subtype, card_id) VALUES ($1, $2) RETURNING *;",
+                [subtype, res.rows[0].card_id]
+              );
+
+              // console.log(subtypeRes.rows[0]);
             }
           }
         } catch (err) {

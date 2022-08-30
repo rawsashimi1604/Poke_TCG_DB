@@ -9,6 +9,7 @@ import sleep from "../../lib/sleep.js";
 async function seedTCGSets() {
   // Data from Pokemon TCG API...
   const data = await pokemon.set.all();
+  let errors = 0;
 
   for (const tcgSet of data) {
     try {
@@ -41,7 +42,7 @@ async function seedTCGSets() {
           tcgSet.series,
           tcgSet.printedTotal,
           tcgSet.total,
-          tcgSet.ptcgoCode,
+          tcgSet.ptcgoCode || null,
           tcgSet.releaseDate,
           tcgSet.updatedAt,
           tcgSet.images.symbol,
@@ -58,10 +59,10 @@ async function seedTCGSets() {
     } catch (err) {
       console.log(err);
       console.log("something went wrong...");
+      errors++;
     }
-
-    await sleep(500);
   }
+  console.log(`Errors: ${errors}`);
   console.log("Completed seeding sets!");
 }
 

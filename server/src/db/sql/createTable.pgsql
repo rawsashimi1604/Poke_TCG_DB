@@ -1,3 +1,5 @@
+-- Create All Tables needed
+
 CREATE TABLE legality (
   legality_id BIGSERIAL PRIMARY KEY,
   unlimited BOOLEAN,
@@ -9,15 +11,15 @@ CREATE TABLE supertype (
   supertype_id INT PRIMARY KEY,
   supertype VARCHAR(50) NOT NULL
 );
-INSERT INTO supertype (supertype_id, supertype)
-VALUES 
-  (1, 'Energy'),
-  (2, 'Pokémon'),
-  (3, 'Trainer');
 
 CREATE TABLE rarity (
   rarity_id INT PRIMARY KEY,
   rarity VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE type (
+  type_id INT PRIMARY KEY,
+  type VARCHAR(50) NOT NULL
 );
 
 
@@ -27,7 +29,7 @@ CREATE TABLE card_set (
   series VARCHAR(150) NOT NULL,
   printed_total INT NOT NULL,
   total INT NOT NULL,
-  ptcgo_code VARCHAR(50) NOT NULL,
+  ptcgo_code VARCHAR(50),
   release_date DATE NOT NULL,
   updated_at DATE NOT NULL,
   symbol_img VARCHAR(200) NOT NULL,
@@ -49,6 +51,8 @@ CREATE TABLE card (
   supertype_id INT NOT NULL,
   set_id VARCHAR(100) NOT NULL,
   rarity_id INT,
+  hp INT,
+  flavor_text VARCHAR(500),
   CONSTRAINT fk_supertype
     FOREIGN KEY(supertype_id)
       REFERENCES supertype(supertype_id),
@@ -82,26 +86,23 @@ CREATE TABLE tcg_player (
       REFERENCES card(card_id)
 );
 
+CREATE TABLE card_type (
+  card_type_id BIGSERIAL PRIMARY KEY,
+  type_id INT,
+  card_id VARCHAR(50) NOT NULL,
+  CONSTRAINT fk_type_id 
+    FOREIGN KEY(type_id)
+      REFERENCES "type"(type_id),
+  CONSTRAINT fk_card_id
+    FOREIGN KEY(card_id)
+      REFERENCES card(card_id)
+);
 
--- SELECT * FROM supertype;
--- SELECT * FROM rarity;
-
--- ALTER TABLE card ALTER COLUMN rarity_id DROP NOT NULL;
--- ALTER TABLE card DROP COLUMN pokedex_id;
-
--- DELETE FROM card_set;
--- DELETE FROM legality;
--- DELETE FROM supertype;
-
-DELETE FROM pokedex_card;
-DELETE FROM tcg_player;
-DELETE FROM card; 
-
--- SELECT set_id FROM card_set WHERE set_id = 'bw3';
-
--- SELECT * FROM card_set WHERE set_id LIKE '%base%';
-SELECT * FROM card WHERE set_id = 'pgo' LIMIT 50;
-SELECT * FROM card_set ORDER BY release_date DESC;
-SELECT * FROM card LIMIT 100;
-SELECT * FROM pokedex_card LIMIT 200;
-SELECT * FROM tcg_player;
+CREATE TABLE subtype (
+  subtype_id BIGSERIAL PRIMARY KEY,
+  subtype VARCHAR(100) NOT NULL,
+  card_id VARCHAR(50) NOT NULL,
+  CONSTRAINT fk_card_id
+    FOREIGN KEY(card_id)
+      REFERENCES card(card_id)
+);
