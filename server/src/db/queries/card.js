@@ -9,6 +9,16 @@ function getAllCards() {
   }
 }
 
+function getCardsByQuantity(quantity) {
+  try {
+    const query = "SELECT * FROM card LIMIT $1";
+    const param = [quantity];
+    return db.query(query, param);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 function getBySet(set) {
   try {
     const query = "SELECT * FROM card WHERE set_id = $1";
@@ -29,4 +39,4 @@ function getById(id) {
   }
 }
 
-export default { getAllCards, getBySet, getById };
+export default { getAllCards, getBySet, getById, getCardsByQuantity };

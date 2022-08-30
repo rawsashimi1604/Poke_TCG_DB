@@ -34,4 +34,11 @@ router.get("/set/:set", async (req, res) => {
   res.send(queryRes.rows);
 });
 
+// Get cards by quantity...
+router.get("/quantity/:qty", async (req, res) => {
+  const qty = req.params.qty;
+  const queryRes = await CardQuery.getCardsByQuantity(qty);
+  res.send(queryRes.rows);
+});
+
 export default router;

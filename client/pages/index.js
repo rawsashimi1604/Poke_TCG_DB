@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import axios from "axios";
 
 import Layout from "../components/layouts/Layout";
 import Sidebar from "../components/layouts/Sidebar";
