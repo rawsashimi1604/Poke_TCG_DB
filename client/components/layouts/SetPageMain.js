@@ -35,23 +35,25 @@ function SetPageMain({ setId }) {
 
   return (
     <div>
-      {cards ? (
+      {cards && set ? (
         <>
           <header className="mb-6 flex flex-col">
-            <h1 className="flex gap-3 items-end">
-              <span className="font-bold text-gray-700 text-3xl">
-                {set?.set_name}
-              </span>
-              <span>({set?.set_id})</span>
-            </h1>
+            <div className="flex justify-between">
+              <h1 className="flex gap-3 items-end">
+                <span className="font-bold text-gray-700 text-3xl">
+                  {set?.set_name}
+                </span>
+                <span>({set?.set_id})</span>
+              </h1>
 
-            <div className="absolute self-end mt-2">
-              <h2 className="text-gray-500 italic">
-                Released: {convertTimestampToDate(set?.release_date)}
-              </h2>
-              <h2 className="text-gray-500 italic">
-                Last Updated: {convertTimestampToDate(set?.updated_at)}
-              </h2>
+              <div className="">
+                <h2 className="text-gray-500 italic">
+                  Released: {convertTimestampToDate(set?.release_date)}
+                </h2>
+                <h2 className="text-gray-500 italic">
+                  Last Updated: {convertTimestampToDate(set?.updated_at)}
+                </h2>
+              </div>
             </div>
 
             <div className="mt-2">
@@ -63,7 +65,7 @@ function SetPageMain({ setId }) {
               </h2>
             </div>
           </header>
-          <section className="grid grid-cols-4 gap-4">
+          <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
             {cards &&
               cards.map((card, i) => {
                 return (
