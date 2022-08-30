@@ -14,10 +14,12 @@ function Sidebar() {
     <aside className="grow-0 flex-shrink-0 p-5 text-xs lg:text-sm border-r h-screen sm:w-52 lg:w-72 hidden sm:inline-flex pb-52 bg-gray-800 text-white">
       <div className="space-y-1 w-full">
         <div className="flex items-center">
-          <h2 className="text-lg font-bold flex items-center gap-1.5">
-            <TbPokeball className="text-red-200 w-6 h-6" />
-            Poké TCG Database
-          </h2>
+          <Link href="/">
+            <h1 className="text-lg font-bold flex items-center gap-1.5 cursor-pointer">
+              <TbPokeball className="text-red-200 w-6 h-6" />
+              Poké TCG Database
+            </h1>
+          </Link>
         </div>
         <div className="flex-1">
           <ul className="pt-2 pb-4 space-y-1 text-sm">

@@ -8,7 +8,6 @@ function Sets() {
   return (
     <div className="font-inter">
       <Layout>
-        <Sidebar />
         <SetMain />
       </Layout>
     </div>

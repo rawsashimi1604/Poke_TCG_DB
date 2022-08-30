@@ -5,7 +5,7 @@ import Body from "./Body";
 
 function Main({}) {
   return (
-    <div className="flex-col space-y-4 p-6 flex-grow overflow-y-scroll">
+    <div className="flex-col space-y-4">
       {/* Section with about info */}
       <Header />
       <Body />

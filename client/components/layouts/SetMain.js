@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import axios from "axios";
 import { convertTimestampToDate } from "../../lib/timestamp";
 
@@ -24,7 +25,7 @@ function SetMain() {
   }, [sets]);
 
   return (
-    <div className="flex-col space-y-4 p-6 flex-grow overflow-y-scroll">
+    <div className="flex-col space-y-4">
       <section className="grid grid-cols-3 xl:grid-cols-4 gap-4">
         {sets &&
           sets.map((set, i) => {
@@ -66,11 +67,13 @@ function SetMain() {
                 duration={200}
                 delay={[75, 0]}
               >
-                <motion.div whileHover={{ scale: 1.05 }}>
-                  <div className="flex gap-2 justify-center items-center p-5 border-gray-900 shadow-lg h-64 cursor-pointer">
-                    <img src={set.logo_img} />
-                  </div>
-                </motion.div>
+                <Link href={`/sets/${set.set_id}`}>
+                  <motion.div whileHover={{ scale: 1.05 }}>
+                    <div className="flex gap-2 justify-center items-center p-5 border-gray-900 shadow-lg h-64 cursor-pointer">
+                      <img src={set.logo_img} />
+                    </div>
+                  </motion.div>
+                </Link>
               </Tippy>
             );
           })}
