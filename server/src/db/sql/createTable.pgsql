@@ -100,7 +100,8 @@ DELETE FROM card;
 -- SELECT set_id FROM card_set WHERE set_id = 'bw3';
 
 -- SELECT * FROM card_set WHERE set_id LIKE '%base%';
-
+SELECT * FROM card WHERE set_id = 'pgo' LIMIT 50;
+SELECT * FROM card_set ORDER BY release_date DESC;
 SELECT * FROM card LIMIT 100;
 SELECT * FROM pokedex_card LIMIT 200;
 SELECT * FROM tcg_player;
