@@ -5,6 +5,7 @@ import { convertTimestampToDate } from "../../lib/timestamp";
 
 import { motion } from "framer-motion";
 
+import LoadingScreen from "../utils/LoadingScreen";
 import PokeCard from "../components/PokeCard";
 
 function SetPageMain({ setId }) {
@@ -26,7 +27,7 @@ function SetPageMain({ setId }) {
 
   return (
     <div>
-      <header></header>
+      {cards ? <header>Card Exists</header> : <LoadingScreen />}
 
       <section className="grid grid-cols-4 gap-4">
         {cards &&

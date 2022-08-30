@@ -15,6 +15,7 @@
     "prettier": "2.7.1"
   },
   "dependencies": {
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "react-loader-spinner": "^5.3.3"
   }
 }
