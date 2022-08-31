@@ -29,10 +29,6 @@ function SetPageMain({ setId }) {
     fetchSetInformation();
   }, []);
 
-  useEffect(() => {
-    console.log(set);
-  }, [set]);
-
   return (
     <div>
       {cards && set ? (

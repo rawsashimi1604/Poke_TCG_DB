@@ -35,7 +35,7 @@ router.get("/count", async (req, res) => {
 router.get("/:cardId", async (req, res) => {
   const cardId = req.params.cardId;
   const queryRes = await CardQuery.getById(cardId);
-  res.send(queryRes.rows);
+  res.send(queryRes.rows[0]);
 });
 
 // Get all cards from specific set...

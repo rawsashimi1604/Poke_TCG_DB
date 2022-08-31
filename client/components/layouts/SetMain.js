@@ -73,7 +73,7 @@ function SetMain() {
               >
                 <Link href={`/sets/${set.set_id}`}>
                   <motion.div whileHover={{ scale: 1.05 }}>
-                    <div className="flex gap-2 justify-center items-center p-5 border-[1px] border-gray-300 shadow-lg h-64 cursor-pointer">
+                    <div className="flex gap-2 justify-center items-center p-5 border-[1px] border-gray-200 shadow-lg h-64 cursor-pointer">
                       <img src={set.logo_img} />
                     </div>
                   </motion.div>

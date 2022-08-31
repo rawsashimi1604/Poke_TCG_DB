@@ -23,10 +23,6 @@ function Body({}) {
     fetchPokeCardsData();
   }, []);
 
-  useEffect(() => {
-    console.log(pokeCards);
-  }, [pokeCards]);
-
   return (
     <section className="">
       <HeaderText text="Latest Cards" />
