@@ -5,6 +5,7 @@ import pokemon from "pokemontcgsdk";
 
 import cardRouter from "./routes/card.js";
 import setRouter from "./routes/set.js";
+import typeRouter from "./routes/type.js";
 
 const app = express();
 const PORT = 3000;
@@ -23,6 +24,7 @@ app.use(cors(corsOptions));
 // Routes
 app.use("/api/cards", cardRouter);
 app.use("/api/sets", setRouter);
+app.use("/api/types", typeRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello world!");
