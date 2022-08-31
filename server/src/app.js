@@ -1,4 +1,5 @@
 import express from "express";
+import morgan from "morgan";
 import cors from "cors";
 import pokemon from "pokemontcgsdk";
 
@@ -7,6 +8,9 @@ import setRouter from "./routes/set.js";
 
 const app = express();
 const PORT = 3000;
+
+// Enable logging of request hits
+app.use(morgan("combined"));
 
 // Enable CORS
 const corsOptions = {

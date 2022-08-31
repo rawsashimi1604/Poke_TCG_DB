@@ -5,7 +5,6 @@ const router = express.Router();
 
 // Middleware that is specific to Card Router..
 router.use((req, res, next) => {
-  console.log("Card route was triggered.");
   next();
 });
 

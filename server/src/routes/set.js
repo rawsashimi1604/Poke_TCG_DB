@@ -5,7 +5,6 @@ const router = express.Router();
 
 // Middleware that is specific to Set Router..
 router.use((req, res, next) => {
-  console.log("Set route was triggered.");
   next();
 });
 

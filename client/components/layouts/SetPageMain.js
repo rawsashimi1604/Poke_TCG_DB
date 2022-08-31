@@ -40,7 +40,7 @@ function SetPageMain({ setId }) {
           <header className="mb-6 flex flex-col">
             <div className="flex justify-between">
               <h1 className="flex gap-3 items-end">
-                <img src={set?.symbol_img} className="h-12 w-12"/>
+                <img src={set?.symbol_img} className="h-12 w-12" />
                 <span className="font-bold text-gray-700 text-3xl">
                   {set?.set_name}
                 </span>
