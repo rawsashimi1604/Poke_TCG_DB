@@ -9,6 +9,15 @@ function getAllCards() {
   }
 }
 
+function getCardQuantity() {
+  try {
+    const query = "SELECT COUNT(*) FROM card";
+    return db.query(query);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 function getCardsByQuantity(quantity) {
   try {
     const query = "SELECT * FROM card WHERE set_id = 'pgo' LIMIT $1";
@@ -39,4 +48,10 @@ function getById(id) {
   }
 }
 
-export default { getAllCards, getBySet, getById, getCardsByQuantity };
+export default {
+  getAllCards,
+  getCardQuantity,
+  getBySet,
+  getById,
+  getCardsByQuantity,
+};

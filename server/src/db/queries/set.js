@@ -9,6 +9,15 @@ function getAllSets() {
   }
 }
 
+function getSetQuantity() {
+  try {
+    const query = "SELECT COUNT(*) FROM card_set";
+    return db.query(query);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 function getSetById(id) {
   try {
     const query = "SELECT * FROM card_set WHERE set_id = $1";
@@ -19,4 +28,4 @@ function getSetById(id) {
   }
 }
 
-export default { getAllSets, getSetById };
+export default { getAllSets, getSetQuantity, getSetById };

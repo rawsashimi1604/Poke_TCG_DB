@@ -19,6 +19,12 @@ router.get("/all", async (req, res) => {
   res.send(queryRes.rows);
 });
 
+// Get number of sets
+router.get("/count", async (req, res) => {
+  const queryRes = await SetQuery.getSetQuantity();
+  res.send(queryRes.rows[0]);
+});
+
 // Get specific card_set...
 router.get("/id/:id", async (req, res) => {
   const id = req.params.id;

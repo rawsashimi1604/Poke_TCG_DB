@@ -25,6 +25,12 @@ router.get("/all", async (req, res) => {
   }
 });
 
+// Get number of cards in database
+router.get("/count", async (req, res) => {
+  const queryRes = await CardQuery.getCardQuantity();
+  res.send(queryRes.rows[0]);
+});
+
 // Get specific card
 router.get("/:cardId", async (req, res) => {
   const cardId = req.params.cardId;

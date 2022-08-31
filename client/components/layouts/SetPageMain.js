@@ -44,7 +44,7 @@ function SetPageMain({ setId }) {
                 <span className="font-bold text-gray-700 text-3xl">
                   {set?.set_name}
                 </span>
-                <span>({set?.set_id})</span>
+                <span className="font-quicksand">({set?.set_id})</span>
               </h1>
 
               <div className="">

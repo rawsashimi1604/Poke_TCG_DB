@@ -2,12 +2,21 @@ import React from "react";
 import Link from "next/link";
 
 import { HomeIcon, CircleStackIcon } from "@heroicons/react/24/solid";
-import { TbPokeball } from "react-icons/tb";
+import { AiOutlineSearch, AiFillGithub } from "react-icons/ai";
+import { CgShapeHexagon } from "react-icons/cg";
+import Logo from "../components/Logo";
 
 function Sidebar() {
   const menuLinkMapping = [
     { icon: <HomeIcon />, label: "Home", href: "/" },
     { icon: <CircleStackIcon />, label: "Browse By Set", href: "/sets" },
+    { icon: <CgShapeHexagon />, label: "Browse By Type", href: "#" },
+    { icon: <AiOutlineSearch />, label: "Search", href: "#" },
+    {
+      icon: <AiFillGithub />,
+      label: "Github",
+      href: "https://github.com/rawsashimi1604/Poke_TCG_DB",
+    },
   ];
 
   return (
@@ -15,10 +24,7 @@ function Sidebar() {
       <div className="space-y-1 w-full">
         <div className="flex items-center">
           <Link href="/">
-            <h1 className="text-lg font-bold flex items-center gap-1.5 cursor-pointer">
-              <TbPokeball className="text-red-200 w-6 h-6" />
-              Poké TCG Database
-            </h1>
+            <Logo />
           </Link>
         </div>
         <div className="flex-1">
@@ -29,7 +35,7 @@ function Sidebar() {
                   <Link href={menuItem.href} key={i}>
                     <div className="flex items-center p-2 space-x-2 rounded-md">
                       <div className="w-4 h-4">{menuItem.icon}</div>
-                      <span>{menuItem.label}</span>
+                      <span className="text-lg">{menuItem.label}</span>
                     </div>
                   </Link>
                 </li>

@@ -3,6 +3,7 @@ import React from "react";
 import Card from "../components/Card";
 import InfoCard from "../components/InfoCard";
 import LandingCard from "../components/LandingCard";
+import HeaderText from "../components/HeaderText";
 
 function Header() {
   return (
@@ -10,13 +11,13 @@ function Header() {
       <div className="grid grid-cols-6 xl:grid-cols-10 gap-4">
         <div className="col-span-6 xl:col-span-6">
           <div>
-            <h1 className="font-semibold text-xl mb-2">Statistics</h1>
+            <HeaderText text="Statistics" />
             <LandingCard />
           </div>
         </div>
 
         <div className="col-span-6 xl:col-span-4 mb-2">
-          <h1 className="font-semibold text-xl mb-2">Info</h1>
+          <HeaderText text="Info" />
           <InfoCard />
         </div>
       </div>
