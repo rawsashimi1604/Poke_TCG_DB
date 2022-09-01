@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 function PokeCard({ data }) {
   return (
     <>
-      <motion.div whileHover={{ scale: 1.03 }}>
+      <motion.div whileHover={{ scale: 1.05 }}>
         <Link href={`/cards/${data.card_id}`}>
-          <div className="cursor-pointer">
-            <img src={data.images.large_img} />
+          <div className="cursor-pointer ">
+            <img className="shadow-xl" src={data.images.large_img} />
           </div>
         </Link>
       </motion.div>

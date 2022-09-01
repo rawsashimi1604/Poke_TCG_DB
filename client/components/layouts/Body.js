@@ -26,7 +26,7 @@ function Body({}) {
   return (
     <section className="">
       <HeaderText text="Latest Cards" />
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-5">
         {pokeCards &&
           pokeCards.map((card, i) => {
             return (
