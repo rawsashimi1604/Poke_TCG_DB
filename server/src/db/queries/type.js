@@ -9,6 +9,19 @@ function getAllTypes() {
   }
 }
 
-function getAllCardsByType() {}
+function getCardTypesById(id) {
+  try {
+    const query = `
+      SELECT * FROM card_type
+      LEFT JOIN type
+      ON card_type.type_id = type.type_id
+      WHERE card_id = $1
+    `;
+    const params = [id];
+    return db.query(query, params);
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-export default { getAllTypes };
+export default { getAllTypes, getCardTypesById };

@@ -9,4 +9,14 @@ function getAllSubtypes() {
   }
 }
 
-export default { getAllSubtypes };
+function getSubtypesById(id) {
+  try {
+    const query = "SELECT * FROM subtype WHERE card_id = $1";
+    const params = [id];
+    return db.query(query, params);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export default { getAllSubtypes, getSubtypesById };

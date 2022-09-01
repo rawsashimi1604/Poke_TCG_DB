@@ -7,42 +7,51 @@ import {
   TypeQuery,
 } from "../db/queries/index.js";
 
-// async function buildCardJSON(card) {
+async function buildCardJSON(card) {
+  // Query subtype by card_id
+  const subtypeQuery = await SubtypeQuery.getSubtypesById(card.data.card_id);
+  const subtypeData = subtypeQuery.rows;
 
-//   // Query set by set_id
-//   const setQuery = await SetQuery.getSetById(card.set_id);
-//   const setData = setQuery.rows[0];
+  // Query type by card_id
+  const typeQuery = await TypeQuery.getCardTypesById(card.data.card_id);
+  const typeData = typeQuery.rows;
 
-//   const res = {}
+  // Query pokedexCard by card_id
+  const pokedexQuery = await PokedexCardQuery.getPokedexByCardId(
+    card.data.card_id
+  );
+  const pokedexData = pokedexQuery.rows;
 
-//   res.card_id = card.card_id;
-//   res.card_name = card.card_name;
-//   res.number = parseInt(card.number);
-//   res.supertype = card.supertype;
-//   res.supertype;
-//   if (card.artist) res.artist = card.artist;
-//   res.hp = card.hp;
-//   res.rarity = card.rarity;
-//   res.flavor_text = card.flavor_text;
-//   res.images = {
-//     small_img: card.small_img,
-//     large_img: card.large_img,
-//   }
-//   res.set = setData;
+  // Query set by set_id
+  const setQuery = await SetQuery.getSetById(card.data.set_id);
+  const setData = setQuery.rows[0];
 
-//   res.prices;
-//   res.subtypes;
-//   res.pokedexNumber;
-//   res.types;
+  // Query TCG_player prices...
+  const tcgPlayerQuery = await TCGPlayerQuery.getTCGPlayerPriceById(
+    card.data.card_id
+  );
+  const tcgPlayerData = tcgPlayerQuery.rows;
 
-//   // Query TCG Player Prices
-//   const tcgPlayerPrices = await TCGPlayerQuery.getTCGPlayerPriceById(card.card_id);
-//   for (const price of tcgPlayerPrices.rows) {
+  const res = {
+    ...card.data,
+    number: parseInt(card.data.number),
+    subtypes: subtypeData.map((subtype) => subtype.subtype),
+    types: typeData.map((type) => type.type),
+    pokedexNumbers: pokedexData.map((pokedex) => pokedex.pokedex_id),
+    set: setData.data,
+    prices: tcgPlayerData.map((tcgData) => {
+      return {
+        ...tcgData,
+        low_price: parseFloat(tcgData.low_price),
+        mid_price: parseFloat(tcgData.mid_price),
+        high_price: parseFloat(tcgData.high_price),
+        market_price: parseFloat(tcgData.market_price),
+      };
+    }),
+  };
 
-//   }
-//   console.log(res)
-//   return res;
-// }
+  return res;
+}
 
 function handleIndex(req, res) {
   res.send("Card route");
@@ -50,14 +59,18 @@ function handleIndex(req, res) {
 
 // GET all cards
 async function handleAllCards(req, res) {
+  let queryRes;
   if (req.query.quantity) {
     const qty = req.query.quantity;
-    const queryRes = await CardQuery.getCardsByQuantity(qty);
-    res.send(queryRes.rows);
+    queryRes = await CardQuery.getCardsByQuantity(qty);
   } else {
-    const queryRes = await CardQuery.getAllCards();
-    res.send(queryRes.rows);
+    queryRes = await CardQuery.getAllCards();
   }
+  res.send(
+    await Promise.all(
+      queryRes.rows.map(async (card) => await buildCardJSON(card))
+    )
+  );
 }
 
 // GET card count in database
@@ -71,9 +84,9 @@ async function handleSpecificCardByCardId(req, res) {
   try {
     const cardId = req.params.cardId;
     const queryRes = await CardQuery.getById(cardId);
-    res.send(queryRes.rows[0]);
+    res.send(await buildCardJSON(queryRes.rows[0]));
   } catch (err) {
-    next(err);
+    console.log(err);
   }
 }
 
@@ -81,7 +94,11 @@ async function handleSpecificCardByCardId(req, res) {
 async function handleAllCardsFromSetId(req, res) {
   const setId = req.params.set;
   const queryRes = await CardQuery.getBySet(setId);
-  res.send(queryRes.rows);
+  res.send(
+    await Promise.all(
+      queryRes.rows.map(async (card) => await buildCardJSON(card))
+    )
+  );
 }
 
 export default {
