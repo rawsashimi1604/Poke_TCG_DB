@@ -1,5 +1,5 @@
 import express from "express";
-import { TypeQuery } from "../db/queries/index.js";
+import TypeController from "../controller/type";
 
 const router = express.Router();
 
@@ -9,14 +9,7 @@ router.use((req, res, next) => {
 });
 
 // Routes
-router.get("/", (req, res) => {
-  res.send("Type route...");
-});
-
-// Get all types...
-router.get("/all", async (req, res) => {
-  const queryRes = await TypeQuery.getAllTypes();
-  res.send(queryRes.rows);
-});
+router.get("/", TypeController.handleIndex);
+router.get("/all", TypeController.handleAllTypes);
 
 export default router;

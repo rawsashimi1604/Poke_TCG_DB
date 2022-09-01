@@ -1,4 +1,4 @@
-import { SetQuery } from "../db/queries/set.js";
+import { SetQuery } from "../db/queries/index.js";
 
 function handleIndex(req, res) {
   res.send("Set route...");

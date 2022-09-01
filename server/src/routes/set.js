@@ -1,6 +1,5 @@
 import express from "express";
 import SetController from "../controller/set.js";
-import { SetQuery } from "../db/queries/index.js";
 
 const router = express.Router();
 

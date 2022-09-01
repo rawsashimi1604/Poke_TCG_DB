@@ -1,6 +1,5 @@
 import express from "express";
 import CardController from "../controller/card.js";
-import { CardQuery } from "../db/queries/index.js";
 
 const router = express.Router();
 
