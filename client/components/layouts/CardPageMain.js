@@ -18,7 +18,7 @@ function CardPageMain({ cardId }) {
     <>
       <div className="flex">
         <section className="flex flex-col"></section>
-        <img src={cardInfo?.large_img} className="w-96" />
+        <img src={cardInfo?.images.large_img} className="w-96" />
       </div>
     </>
   );

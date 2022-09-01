@@ -8,7 +8,7 @@ function PokeCard({ data }) {
       <motion.div whileHover={{ scale: 1.03 }}>
         <Link href={`/cards/${data.card_id}`}>
           <div className="cursor-pointer">
-            <img src={data.large_img} />
+            <img src={data.images.large_img} />
           </div>
         </Link>
       </motion.div>

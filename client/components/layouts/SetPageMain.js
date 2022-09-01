@@ -13,21 +13,27 @@ function SetPageMain({ setId }) {
   const [set, setSet] = useState(null);
 
   async function fetchSetCards() {
-    const res = await axios.get(`http://localhost:3000/api/cards/set/${setId}`);
-    const pokeCardsData = await res.data;
-    setCards(pokeCardsData);
+    if (setId) {
+      const res = await axios.get(
+        `http://localhost:3000/api/cards/set/${setId}`
+      );
+      const pokeCardsData = await res.data;
+      setCards(pokeCardsData);
+    }
   }
 
   async function fetchSetInformation() {
-    const res = await axios.get(`http://localhost:3000/api/sets/id/${setId}`);
-    const pokeCardSetData = await res.data;
-    setSet(pokeCardSetData?.[0]);
+    if (setId) {
+      const res = await axios.get(`http://localhost:3000/api/sets/id/${setId}`);
+      const pokeCardSetData = await res.data;
+      setSet(pokeCardSetData);
+    }
   }
 
   useEffect(() => {
     fetchSetCards();
     fetchSetInformation();
-  }, []);
+  }, [setId]);
 
   return (
     <div>
@@ -36,7 +42,7 @@ function SetPageMain({ setId }) {
           <header className="mb-6 flex flex-col">
             <div className="flex justify-between">
               <h1 className="flex gap-3 items-end">
-                <img src={set?.symbol_img} className="h-12 w-12" />
+                <img src={set?.images.symbol_img} className="h-12 w-12" />
                 <span className="font-bold text-gray-700 text-3xl">
                   {set?.set_name}
                 </span>
@@ -66,9 +72,9 @@ function SetPageMain({ setId }) {
             {cards &&
               cards.map((card, i) => {
                 return (
-                  <>
+                  <div>
                     <PokeCard data={card} key={i} />
-                  </>
+                  </div>
                 );
               })}
           </section>

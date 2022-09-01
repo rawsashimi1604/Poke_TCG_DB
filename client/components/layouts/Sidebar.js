@@ -33,8 +33,11 @@ function Sidebar() {
           <ul className="pt-2 pb-4 space-y-1 text-sm">
             {menuLinkMapping.map((menuItem, i) => {
               return (
-                <li className="rounded-sm cursor-pointer hover:bg-gray-700 hover">
-                  <Link href={menuItem.href} key={i}>
+                <li
+                  className="rounded-sm cursor-pointer hover:bg-gray-700 hover"
+                  key={i}
+                >
+                  <Link href={menuItem.href}>
                     <div className="flex items-center p-2 space-x-2 rounded-md">
                       <div className="w-4 h-4">{menuItem.icon}</div>
                       <span className="text-lg">{menuItem.label}</span>
