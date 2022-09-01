@@ -1,5 +1,5 @@
 import express from "express";
-import TypeController from "../controller/type";
+import TypeController from "../controller/type.js";
 
 const router = express.Router();
 

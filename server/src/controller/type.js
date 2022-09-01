@@ -4,7 +4,7 @@ function handleIndex(req, res) {
   res.send("Type route...");
 } 
 
-function handleAllTypes(req, res) {
+async function handleAllTypes(req, res) {
   const queryRes = await TypeQuery.getAllTypes();
   res.send(queryRes.rows);
 }
