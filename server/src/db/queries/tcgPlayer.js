@@ -9,4 +9,14 @@ function getAllTCGPlayerPrices() {
   }
 }
 
-export default { getAllTCGPlayerPrices };
+function getTCGPlayerPriceById(id) {
+  try {
+    const query = "SELECT * FROM tcg_player WHERE card_id = $1";
+    const params = [id];
+    return db.query(query, params);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export default { getAllTCGPlayerPrices, getTCGPlayerPriceById };

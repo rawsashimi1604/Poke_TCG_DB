@@ -42,8 +42,6 @@ function getById(id) {
   try {
     const query = `
       SELECT * FROM card 
-      LEFT JOIN card_type ON card.card_id = card_type.card_id 
-      LEFT JOIN type ON card_type.type_id = type.type_id
       LEFT JOIN supertype ON card.supertype_id = supertype.supertype_id 
       LEFT JOIN rarity ON card.rarity_id = rarity.rarity_id 
       WHERE card.card_id = $1

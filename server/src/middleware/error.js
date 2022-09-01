@@ -1,5 +1,5 @@
 function handleError(err, req, res, next) {
-  console.log(err.stack);
+  console.log(err);
   res.status(500).send("Something went wrong in the server...");
 }
 
