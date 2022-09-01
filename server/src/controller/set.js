@@ -17,7 +17,7 @@ async function handleCardSetCount(req, res) {
 async function handleSpecificCardSetBySetId(req, res) {
   const id = req.params.id;
   const queryRes = await SetQuery.getSetById(id);
-  res.send(await queryRes.rows?.[0].data);
+  res.send(queryRes.rows?.[0].data);
 }
 
 export default {

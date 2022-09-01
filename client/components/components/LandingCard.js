@@ -35,17 +35,19 @@ function LandingCard() {
 
         <div className="flex justify-between mt-5 text-white ">
           <div className="flex flex-col font-quicksand">
-            <span className="text-lg text-gray-300 font-light">
-              Total Cards:{" "}
+            <span className="text-lg text-gray-300 font-light">Cards: </span>
+            <span className="text-4xl lg:text-6xl xl:text-7xl -ml-1">
+              {pokeCardCount}
             </span>
-            <span className="text-7xl -ml-1">{pokeCardCount}</span>
           </div>
 
           <div className="flex flex-col font-quicksand">
             <span className="text-lg text-gray-300 font-light">
-              Total Card Sets:{" "}
+              Card Sets:{" "}
             </span>
-            <span className="text-7xl -ml-1">{pokeSetCount}</span>
+            <span className="text-4xl lg:text-6xl xl:text-7xl -ml-1">
+              {pokeSetCount}
+            </span>
           </div>
         </div>
       </div>
