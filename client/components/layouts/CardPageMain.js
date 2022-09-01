@@ -120,6 +120,27 @@ function CardPageMain({ cardId }) {
                   </div>
                 </div>
               )}
+
+              <div className="grid grid-cols-3">
+                <div className="flex flex-col">
+                  <HeaderText text="UNLIMITED LEGALITY" />
+                  <span>
+                    {String(cardInfo?.set?.legality?.unlimited).toUpperCase()}
+                  </span>
+                </div>
+                <div className="flex flex-col">
+                  <HeaderText text="STANDARD LEGALITY" />
+                  <span>
+                    {String(cardInfo?.set?.legality?.standard).toUpperCase()}
+                  </span>
+                </div>
+                <div className="flex flex-col">
+                  <HeaderText text="EXPANDED LEGALITY" />
+                  <span>
+                    {String(cardInfo?.set?.legality?.expanded).toUpperCase()}
+                  </span>
+                </div>
+              </div>
             </section>
 
             <hr className="border-t-2 border-gray-300 mb-4" />
@@ -179,7 +200,7 @@ function CardPageMain({ cardId }) {
           {/* Pokemon Card IMG */}
           <img
             src={cardInfo?.images.large_img}
-            className={`${width > 1280 ? "w-96" : "w-64"}`}
+            className={`${width > 1280 ? "w-96" : "w-64"} self-start`}
           />
         </div>
       </div>
