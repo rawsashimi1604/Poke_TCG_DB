@@ -3,8 +3,6 @@ import Link from "next/link";
 import axios from "axios";
 import { convertTimestampToDate } from "../../lib/timestamp";
 
-import { motion } from "framer-motion";
-
 import LoadingScreen from "../utils/LoadingScreen";
 import InfoWidget from "../components/InfoWidget";
 import PokeCard from "../components/PokeCard";
@@ -64,7 +62,7 @@ function SetPageMain({ setId }) {
 
             {/* Statistics */}
             <div className="flex gap-4 items-center py-1 px-4 rounded-lg bg-blue-900/80 text-white mb-2">
-              <h1 className="w-32 tracking-tight font-bold text-lg my-2 pr-3 border-r-2 border-cyan-100">
+              <h1 className="w-32 tracking-tight font-bold my-2 pr-3 border-r-2 border-cyan-100">
                 STATISTICS
               </h1>
 
@@ -123,7 +121,7 @@ function SetPageMain({ setId }) {
 
             {/* Legalities */}
             <div className="flex gap-4 items-center py-1 px-4 rounded-lg bg-gray-700/80 text-white">
-              <h1 className="w-32 tracking-tight font-bold text-lg my-2 pr-3 border-r-2 border-cyan-100">
+              <h1 className="w-32 tracking-tight font-bold my-2 pr-3 border-r-2 border-cyan-100">
                 LEGALITIES
               </h1>
 

@@ -2,7 +2,7 @@ import React from "react";
 
 function InfoWidget({ left, right }) {
   return (
-    <div className="flex font-quicksand">
+    <div className="flex font-quicksand text-xs">
       <div
         className={`py-1 px-4 ${left.textColor} ${left.bgColor} rounded-l-lg`}
       >
