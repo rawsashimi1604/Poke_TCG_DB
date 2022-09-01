@@ -42,10 +42,10 @@ function getById(id) {
   try {
     const query = `
       SELECT * FROM card 
-      INNER JOIN card_type ON card.card_id = card_type.card_id 
-      INNER JOIN type ON card_type.type_id = type.type_id
-      INNER JOIN supertype ON card.supertype_id = supertype.supertype_id 
-      INNER JOIN rarity ON card.rarity_id = rarity.rarity_id 
+      LEFT JOIN card_type ON card.card_id = card_type.card_id 
+      LEFT JOIN type ON card_type.type_id = type.type_id
+      LEFT JOIN supertype ON card.supertype_id = supertype.supertype_id 
+      LEFT JOIN rarity ON card.rarity_id = rarity.rarity_id 
       WHERE card.card_id = $1
     `;
     const params = [id];
@@ -60,10 +60,10 @@ function getTCGPrice(id) {
     const query = `
       SELECT * FROM tcg_player
       WHERE card_id = $1
-    `
+    `;
     const params = [id];
     return db.query(query, params);
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 }
@@ -74,5 +74,5 @@ export default {
   getBySet,
   getById,
   getCardsByQuantity,
-  getTCGPrice
+  getTCGPrice,
 };
