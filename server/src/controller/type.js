@@ -2,7 +2,7 @@ import { TypeQuery } from "../db/queries/index.js";
 
 function handleIndex(req, res) {
   res.send("Type route...");
-} 
+}
 
 async function handleAllTypes(req, res) {
   const queryRes = await TypeQuery.getAllTypes();
@@ -11,5 +11,5 @@ async function handleAllTypes(req, res) {
 
 export default {
   handleIndex,
-  handleAllTypes
-}
+  handleAllTypes,
+};

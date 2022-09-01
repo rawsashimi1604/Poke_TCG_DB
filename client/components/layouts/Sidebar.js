@@ -24,7 +24,9 @@ function Sidebar() {
       <div className="space-y-1 w-full">
         <div className="flex items-center">
           <Link href="/">
-            <Logo />
+            <div className="cursor-pointer">
+              <Logo />
+            </div>
           </Link>
         </div>
         <div className="flex-1">
