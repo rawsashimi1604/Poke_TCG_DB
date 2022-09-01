@@ -2,7 +2,26 @@ import db from "../../dbConfig.js";
 
 function getAllCards() {
   try {
-    const query = "SELECT * FROM card";
+    const query = `
+      SELECT json_build_object(
+        'card_id', card.card_id,
+        'card_name', card.card_name,
+        'number', card.number,
+        'supertype', supertype.supertype,
+        'artist', card.artist,
+        'hp', card.hp,
+        'rarity', rarity.rarity,
+        'flavor_text', card.flavor_text,
+        'images', json_build_object(
+          'small_img', card.small_img,
+          'large_img', card.large_img
+        )
+      )
+      AS data
+      FROM card
+      LEFT JOIN supertype ON card.supertype_id = supertype.supertype_id 
+      LEFT JOIN rarity ON card.rarity_id = rarity.rarity_id 
+    `;
     return db.query(query);
   } catch (err) {
     console.log(err);
@@ -11,7 +30,7 @@ function getAllCards() {
 
 function getCardQuantity() {
   try {
-    const query = "SELECT COUNT(*) FROM card";
+    const query = `SELECT COUNT(*) FROM card`;
     return db.query(query);
   } catch (err) {
     console.log(err);
@@ -20,7 +39,28 @@ function getCardQuantity() {
 
 function getCardsByQuantity(quantity) {
   try {
-    const query = "SELECT * FROM card WHERE set_id = 'pgo' LIMIT $1";
+    const query = `
+      SELECT json_build_object(
+        'card_id', card.card_id,
+        'card_name', card.card_name,
+        'number', card.number,
+        'supertype', supertype.supertype,
+        'artist', card.artist,
+        'hp', card.hp,
+        'rarity', rarity.rarity,
+        'flavor_text', card.flavor_text,
+        'images', json_build_object(
+          'small_img', card.small_img,
+          'large_img', card.large_img
+        )
+      )
+      AS data
+      FROM card
+      LEFT JOIN supertype ON card.supertype_id = supertype.supertype_id 
+      LEFT JOIN rarity ON card.rarity_id = rarity.rarity_id
+      WHERE set_id = 'pgo'
+      LIMIT $1
+    `;
     const param = [quantity];
     return db.query(query, param);
   } catch (err) {
@@ -30,7 +70,7 @@ function getCardsByQuantity(quantity) {
 
 function getBySet(set) {
   try {
-    const query = "SELECT * FROM card WHERE set_id = $1";
+    const query = `SELECT * FROM card WHERE set_id = $1`;
     const params = [set];
     return db.query(query, params);
   } catch (err) {
@@ -41,23 +81,25 @@ function getBySet(set) {
 function getById(id) {
   try {
     const query = `
-      SELECT * FROM card 
+      SELECT json_build_object(
+        'card_id', card.card_id,
+        'card_name', card.card_name,
+        'number', card.number,
+        'supertype', supertype.supertype,
+        'artist', card.artist,
+        'hp', card.hp,
+        'rarity', rarity.rarity,
+        'flavor_text', card.flavor_text,
+        'images', json_build_object(
+          'small_img', card.small_img,
+          'large_img', card.large_img
+        )
+      )
+      AS data
+      FROM card
       LEFT JOIN supertype ON card.supertype_id = supertype.supertype_id 
-      LEFT JOIN rarity ON card.rarity_id = rarity.rarity_id 
+      LEFT JOIN rarity ON card.rarity_id = rarity.rarity_id
       WHERE card.card_id = $1
-    `;
-    const params = [id];
-    return db.query(query, params);
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-function getTCGPrice(id) {
-  try {
-    const query = `
-      SELECT * FROM tcg_player
-      WHERE card_id = $1
     `;
     const params = [id];
     return db.query(query, params);
@@ -72,5 +114,4 @@ export default {
   getBySet,
   getById,
   getCardsByQuantity,
-  getTCGPrice,
 };

@@ -22,6 +22,7 @@ function getAllSets() {
           'logo_img', cs.logo_img
         )
       )
+      AS data
       FROM card_set cs
       INNER JOIN legality l ON cs.legality_id = l.legality_id;
     `;
@@ -62,6 +63,7 @@ function getSetById(id) {
           'logo_img', cs.logo_img
         )
       )
+      AS data
       FROM card_set cs
       INNER JOIN legality l ON cs.legality_id = l.legality_id
       WHERE cs.set_id = $1
