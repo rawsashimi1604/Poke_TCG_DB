@@ -63,35 +63,37 @@ function CardPageMain({ cardId }) {
           <div className="flex flex-col border-t-2 border-gray-300 flex-grow-1 w-full pt-4">
             <div className="mb-2">CARD INFORMATION</div>
             <section className="flex-col space-y-6 mb-4">
-              <div className="grid grid-cols-3">
-                <div className="flex flex-col">
-                  <HeaderText text="TYPE" />
-                  <div className="flex space-x-4">
-                    {cardInfo?.types.map((type, i) => {
-                      return (
-                        <div className="flex items-center space-x-2">
-                          <TypeIcon type={type} />
-                          <span className="text-lg">{type}</span>
-                        </div>
-                      );
-                    })}
+              {cardInfo?.supertype === "Pokémon" && (
+                <div className="grid grid-cols-3">
+                  <div className="flex flex-col">
+                    <HeaderText text="TYPE" />
+                    <div className="flex space-x-4">
+                      {cardInfo?.types.map((type, i) => {
+                        return (
+                          <div className="flex items-center space-x-2">
+                            <TypeIcon type={type} />
+                            <span className="text-lg">{type}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <HeaderText text="POKEDEX NUMBER" />
+                    <div className="flex space-x-4">
+                      {cardInfo?.pokedexNumbers.map((num, i) => {
+                        return <span className="text-lg mt-1">{num}</span>;
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <HeaderText text="HP" />
+                    <span className="text-lg mt-1">{cardInfo?.hp}</span>
                   </div>
                 </div>
-
-                <div className="flex flex-col">
-                  <HeaderText text="POKEDEX NUMBER" />
-                  <div className="flex space-x-4">
-                    {cardInfo?.pokedexNumbers.map((num, i) => {
-                      return <span className="text-lg mt-1">{num}</span>;
-                    })}
-                  </div>
-                </div>
-
-                <div className="flex flex-col">
-                  <HeaderText text="HP" />
-                  <span className="text-lg mt-1">{cardInfo?.hp}</span>
-                </div>
-              </div>
+              )}
 
               <div className="grid grid-cols-3">
                 <div className="flex flex-col">
@@ -110,12 +112,14 @@ function CardPageMain({ cardId }) {
                 </div>
               </div>
 
-              <div className="flex w-full space-x-[150px]">
-                <div className="flex flex-col">
-                  <HeaderText text="FLAVOR TEXT" />
-                  <span>{cardInfo?.flavor_text}</span>
+              {cardInfo?.flavor_text && (
+                <div className="flex w-full space-x-[150px]">
+                  <div className="flex flex-col">
+                    <HeaderText text="FLAVOR TEXT" />
+                    <span>{cardInfo?.flavor_text}</span>
+                  </div>
                 </div>
-              </div>
+              )}
             </section>
 
             <hr className="border-t-2 border-gray-300 mb-4" />
