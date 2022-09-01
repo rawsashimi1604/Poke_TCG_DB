@@ -14,7 +14,17 @@ function CardPageMain({ cardId }) {
     fetchCardInformation();
   }, []);
 
-  return <div>{cardInfo?.small_img}</div>;
+  return (
+    <>
+      <div className="flex">
+        <section className="flex flex-col">
+          
+
+        </section>
+        <img src={cardInfo?.large_img} className="w-96"/>
+      </div>
+    </>
+  );
 }
 
 export default CardPageMain;

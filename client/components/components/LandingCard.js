@@ -25,7 +25,7 @@ function LandingCard() {
   return (
     <div className="flex relative h-60 bg-gradient-to-r from-gray-700 to-gray-900 rounded-lg px-6 py-4 shadow-xl shadow-cyan-20">
       <img
-        src="/assets/svg/25.svg"
+        src="/assets/pokemon/25.svg"
         className="relative -top-4 -left-[50px] w-64 h-64 rotate-7"
       />
       <div className="relative -left-[50px]">

@@ -17,7 +17,7 @@ function InfoCard() {
         </span>
       </div>
 
-      <img src="/assets/svg/1.svg" className="w-44 h-44 rotate-7" />
+      <img src="/assets/pokemon/1.svg" className="w-44 h-44 rotate-7" />
     </div>
   );
 }
