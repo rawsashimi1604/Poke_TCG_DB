@@ -7,7 +7,7 @@ import LoadingScreen from "@/components/utils/LoadingScreen";
 import InfoWidget from "@/components/common/InfoWidget";
 import PokeCard from "@/components/common/PokeCard";
 
-function SetPageMain({ setId }) {
+function Main({ setId }) {
   const [cards, setCards] = useState(null);
   const [set, setSet] = useState(null);
 
@@ -163,4 +163,4 @@ function SetPageMain({ setId }) {
   );
 }
 
-export default SetPageMain;
+export default Main;

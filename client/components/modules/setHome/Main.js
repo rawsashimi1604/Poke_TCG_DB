@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 import HeaderText from "@/components/common/HeaderText";
 
-function SetMain() {
+function Main() {
   const [sets, setSets] = useState(null);
 
   async function fetchPokeCardSetsData() {
@@ -41,4 +41,4 @@ function SetMain() {
   );
 }
 
-export default SetMain;
+export default Main;

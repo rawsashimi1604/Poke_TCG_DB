@@ -6,31 +6,31 @@ import { AiOutlineSearch, AiFillGithub } from "react-icons/ai";
 import { CgShapeHexagon } from "react-icons/cg";
 import Logo from "@/components/common/Logo";
 
-function Sidebar() {
-  const menuLinkMapping = [
-    { icon: <HomeIcon className="w-10 h-10" />, label: "Home", href: "/" },
-    {
-      icon: <CircleStackIcon className="w-10 h-10" />,
-      label: "Browse By Set",
-      href: "/sets",
-    },
-    {
-      icon: <CgShapeHexagon className="w-10 h-10" />,
-      label: "Browse By Type",
-      href: "#",
-    },
-    {
-      icon: <AiOutlineSearch className="w-10 h-10" />,
-      label: "Search",
-      href: "#",
-    },
-    {
-      icon: <AiFillGithub className="w-10 h-10" />,
-      label: "Github",
-      href: "https://github.com/rawsashimi1604/Poke_TCG_DB",
-    },
-  ];
+const menuLinkMapping = [
+  { icon: <HomeIcon className="w-10 h-10" />, label: "Home", href: "/" },
+  {
+    icon: <CircleStackIcon className="w-10 h-10" />,
+    label: "Browse By Set",
+    href: "/sets",
+  },
+  {
+    icon: <CgShapeHexagon className="w-10 h-10" />,
+    label: "Browse By Type",
+    href: "#",
+  },
+  {
+    icon: <AiOutlineSearch className="w-10 h-10" />,
+    label: "Search",
+    href: "#",
+  },
+  {
+    icon: <AiFillGithub className="w-10 h-10" />,
+    label: "Github",
+    href: "https://github.com/rawsashimi1604/Poke_TCG_DB",
+  },
+];
 
+function Sidebar() {
   return (
     <aside className="grow-0 flex-shrink-0 p-5 text-xs lg:text-sm border-r h-screen w-24 sm:w-52 lg:w-72 sm:inline-flex pb-52 bg-gray-800 text-white">
       <div className="space-y-1 w-full">

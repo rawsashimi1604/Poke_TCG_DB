@@ -172,25 +172,33 @@ function CardPageMain({ cardId }) {
                       <div className="flex flex-col">
                         <HeaderText text="LOW" />
                         <span className="font-bold text-purple-800 text-xl">
-                          ${parseFloat(price.low_price).toFixed(2)}
+                          {price.low_price
+                            ? "$" + parseFloat(price.low_price).toFixed(2)
+                            : "Unavailable"}
                         </span>
                       </div>
                       <div className="flex flex-col">
                         <HeaderText text="MID" />
                         <span className="font-bold text-lime-800 text-xl">
-                          ${parseFloat(price.mid_price).toFixed(2)}
+                          {price.mid_price
+                            ? "$" + parseFloat(price.mid_price).toFixed(2)
+                            : "Unavailable"}
                         </span>
                       </div>
                       <div className="flex flex-col">
                         <HeaderText text="HIGH" />
                         <span className="font-bold text-blue-800 text-xl">
-                          ${parseFloat(price.high_price).toFixed(2)}
+                          {price.high_price
+                            ? "$" + parseFloat(price.high_price).toFixed(2)
+                            : "Unavailable"}
                         </span>
                       </div>
                       <div className="flex flex-col">
                         <HeaderText text="MARKET" />
                         <span className="font-bold text-orange-800 text-xl">
-                          ${parseFloat(price.market_price).toFixed(2)}
+                          {price.market_price
+                            ? "$" + parseFloat(price.market_price).toFixed(2)
+                            : "Unavailable"}
                         </span>
                       </div>
                     </div>

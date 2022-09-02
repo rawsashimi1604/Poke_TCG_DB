@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import { motion } from "framer-motion";
-
 import PokeCard from "@/components/common/PokeCard";
 import HeaderText from "@/components/common/HeaderText";
 
+// Number of cards to render...
 const NUMBER_OF_CARDS = 20;
 
 function Body({}) {
