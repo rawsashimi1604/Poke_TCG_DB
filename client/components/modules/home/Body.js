@@ -1,26 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
+import { HomeContextData } from "@/contexts/HomeContext";
 import PokeCard from "@/components/common/PokeCard";
 import HeaderText from "@/components/common/HeaderText";
 
-// Number of cards to render...
-const NUMBER_OF_CARDS = 20;
-
-function Body({}) {
-  const [pokeCards, setPokeCards] = useState(null);
-
-  async function fetchPokeCardsData() {
-    const res = await axios.get(
-      `http://localhost:3000/api/cards/all?quantity=${NUMBER_OF_CARDS}`
-    );
-    const pokeData = await res.data;
-    setPokeCards(pokeData);
-  }
-
-  useEffect(() => {
-    fetchPokeCardsData();
-  }, []);
+function Body() {
+  const { pokeCards } = useContext(HomeContextData);
 
   return (
     <section className="">

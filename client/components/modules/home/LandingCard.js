@@ -1,26 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 
+import { HomeContextData } from "@/contexts/HomeContext";
+
 function LandingCard() {
-  const [pokeCardCount, setPokeCardCount] = useState(0);
-  const [pokeSetCount, setPokeSetCount] = useState(0);
-
-  async function fetchPokeCardCount() {
-    const res = await axios.get(`http://localhost:3000/api/cards/count`);
-    const resData = await res.data;
-    setPokeCardCount(resData.count);
-  }
-
-  async function fetchPokeSetCount() {
-    const res = await axios.get("http://localhost:3000/api/sets/count");
-    const resData = await res.data;
-    setPokeSetCount(resData.count);
-  }
-
-  useEffect(() => {
-    fetchPokeCardCount();
-    fetchPokeSetCount();
-  }, []);
+  const { pokeSetCount, pokeCardCount } = useContext(HomeContextData);
 
   return (
     <div className="flex relative h-60 bg-gradient-to-r from-gray-700 to-gray-900 rounded-lg px-6 py-4 shadow-xl shadow-cyan-20">
