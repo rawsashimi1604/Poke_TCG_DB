@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { convertTimestampToDate } from "@/lib/timestamp";
+
+import { CardContextData } from "@/contexts/CardContext";
 import HeaderText from "@/components/common/HeaderText";
 
-function TCGPlayerInformation({ cardInfo }) {
+function TCGPlayerInformation() {
+  const cardInfo = useContext(CardContextData);
+
   return (
     <section>
       {cardInfo?.prices.map((price, i) => {

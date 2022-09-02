@@ -15,16 +15,24 @@ const typeColorMapping = {
   Water: types.WATER,
 };
 
-function TypeIcon({ type = "" }) {
+function TypeIcon({ type = "", size = 8 }) {
   return (
     <div
-      className="p-2 h-8 w-8 flex items-center justify-center rounded-[100px]"
+      className={`p-2 flex items-center justify-center rounded-[100px]`}
       style={{
         backgroundColor: [typeColorMapping[type]],
         boxShadow: `0px 0px 10px ${typeColorMapping[type]}`,
+        height: `${size * 4}px`,
+        width: `${size * 4}px`,
       }}
     >
-      <img src={`/assets/types/${type}.svg`} className="h-8 w-8" />
+      <img
+        src={`/assets/types/${type}.svg`}
+        style={{
+          height: `${size * 4}px`,
+          width: `${size * 4}px`,
+        }}
+      />
     </div>
   );
 }

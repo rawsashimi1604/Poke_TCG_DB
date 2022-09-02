@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 
+import { CardContextData } from "@/contexts/CardContext";
 import InfoWidget from "@/components/common/InfoWidget";
 
-function LegalityList({ legalities }) {
+function LegalityList() {
+  const cardInfo = useContext(CardContextData);
+
   return (
     <section className="flex space-x-3 items-center mb-6">
-      {legalities &&
-        Object.keys(legalities).map((legality, i) => {
-          const isLegal = legalities[legality];
+      {cardInfo &&
+        Object.keys(cardInfo.set.legality).map((legality, i) => {
+          const isLegal = cardInfo.set.legality[legality];
 
           return (
             <InfoWidget

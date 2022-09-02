@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 
+import { CardContextData } from "@/contexts/CardContext";
 import HeaderText from "@/components/common/HeaderText";
 import TypeIcon from "@/components/common/TypeIcon";
 import LegalityList from "@/components/modules/card/LegalityList";
 
-function CardInformation({ cardInfo }) {
+function CardInformation() {
+  const cardInfo = useContext(CardContextData);
+
   return (
     <section className="flex-col space-y-6 mb-4">
-      <LegalityList legalities={cardInfo?.set?.legality} />
+      <LegalityList />
 
       {cardInfo?.supertype === "Pokémon" && (
         <div className="grid grid-cols-3">

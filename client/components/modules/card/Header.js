@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
+import { CardContextData } from "@/contexts/CardContext";
 
-function Header({ cardInfo }) {
+function Header() {
+  const cardInfo = useContext(CardContextData);
+
   return (
     <header className="flex justify-between items-center">
       <section className="flex flex-col h-full mb-2">

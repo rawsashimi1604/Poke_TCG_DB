@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 
+import { CardContext } from "@/contexts/CardContext";
 import Layout from "@/components/layouts/Layout";
 import Main from "@/components/modules/card/Main";
 
@@ -10,9 +11,11 @@ function CardPage() {
 
   return (
     <div className="font-inter">
-      <Layout>
-        <Main cardId={card} />
-      </Layout>
+      <CardContext cardId={card}>
+        <Layout>
+          <Main cardId={card} />
+        </Layout>
+      </CardContext>
     </div>
   );
 }
