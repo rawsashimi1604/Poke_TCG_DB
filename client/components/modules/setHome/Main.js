@@ -1,24 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import axios from "axios";
 
 import { motion } from "framer-motion";
 
+import { SetHomeContextData } from "@/contexts/SetHomeContext";
 import HeaderText from "@/components/common/HeaderText";
 import DividerLine from "@/components/common/DividerLine";
 
 function Main() {
-  const [sets, setSets] = useState(null);
-
-  async function fetchPokeCardSetsData() {
-    const res = await axios.get(`http://localhost:3000/api/sets/all`);
-    const pokeSetsData = await res.data;
-    setSets(pokeSetsData);
-  }
-
-  useEffect(() => {
-    fetchPokeCardSetsData();
-  }, []);
+  const { sets } = useContext(SetHomeContextData);
 
   return (
     <div className="flex-col">

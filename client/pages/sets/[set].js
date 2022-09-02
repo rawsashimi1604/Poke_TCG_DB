@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 
+import { SetContext } from "@/contexts/SetContext";
 import Layout from "@/components/layouts/Layout";
 import Main from "@/components/modules/set/Main";
 
@@ -10,9 +11,11 @@ function SetPage() {
 
   return (
     <div className="font-inter">
-      <Layout>
-        <Main setId={set} />
-      </Layout>
+      <SetContext setId={set}>
+        <Layout>
+          <Main setId={set} />
+        </Layout>
+      </SetContext>
     </div>
   );
 }

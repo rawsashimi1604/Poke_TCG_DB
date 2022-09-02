@@ -1,38 +1,13 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import axios from "axios";
+import React, { useEffect, useState, useContext } from "react";
 import { convertTimestampToDate } from "../../../lib/timestamp";
 
+import { SetContextData } from "@/contexts/SetContext";
 import LoadingScreen from "@/components/utils/LoadingScreen";
 import InfoWidget from "@/components/common/InfoWidget";
 import PokeCard from "@/components/common/PokeCard";
 
-function Main({ setId }) {
-  const [cards, setCards] = useState(null);
-  const [set, setSet] = useState(null);
-
-  async function fetchSetCards() {
-    if (setId) {
-      const res = await axios.get(
-        `http://localhost:3000/api/cards/set/${setId}`
-      );
-      const pokeCardsData = await res.data;
-      setCards(pokeCardsData);
-    }
-  }
-
-  async function fetchSetInformation() {
-    if (setId) {
-      const res = await axios.get(`http://localhost:3000/api/sets/id/${setId}`);
-      const pokeCardSetData = await res.data;
-      setSet(pokeCardSetData);
-    }
-  }
-
-  useEffect(() => {
-    fetchSetCards();
-    fetchSetInformation();
-  }, [setId]);
+function Main() {
+  const { cards, set } = useContext(SetContextData);
 
   return (
     <div>
