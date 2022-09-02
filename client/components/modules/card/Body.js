@@ -6,7 +6,7 @@ import TCGPlayerInformation from "./TCGPlayerInformation";
 import DividerLine from "@/components/common/DividerLine";
 
 function Body() {
-  const cardInfo = useContext(CardContextData);
+  const { cardInfo } = useContext(CardContextData);
 
   return (
     <div className="flex flex-col lg:flex-row lg:justify-between gap-x-5">

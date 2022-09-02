@@ -4,7 +4,7 @@ import { CardContextData } from "@/contexts/CardContext";
 import InfoWidget from "@/components/common/InfoWidget";
 
 function LegalityList() {
-  const cardInfo = useContext(CardContextData);
+  const { cardInfo } = useContext(CardContextData);
 
   return (
     <section className="flex space-x-3 items-center mb-6">

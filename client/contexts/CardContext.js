@@ -18,7 +18,7 @@ export function CardContext({ children, cardId }) {
 
   return (
     <CardContextData.Provider
-      value={cardInfo} // value of your context
+      value={{ cardInfo }} // value of your context
     >
       {children}
     </CardContextData.Provider>

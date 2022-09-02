@@ -5,7 +5,7 @@ import { CardContextData } from "@/contexts/CardContext";
 import HeaderText from "@/components/common/HeaderText";
 
 function TCGPlayerInformation() {
-  const cardInfo = useContext(CardContextData);
+  const { cardInfo } = useContext(CardContextData);
 
   return (
     <section>

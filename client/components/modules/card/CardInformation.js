@@ -6,7 +6,7 @@ import TypeIcon from "@/components/common/TypeIcon";
 import LegalityList from "@/components/modules/card/LegalityList";
 
 function CardInformation() {
-  const cardInfo = useContext(CardContextData);
+  const { cardInfo } = useContext(CardContextData);
 
   return (
     <section className="flex-col space-y-6 mb-4">

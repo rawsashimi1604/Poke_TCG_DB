@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CardContextData } from "@/contexts/CardContext";
 
 function Header() {
-  const cardInfo = useContext(CardContextData);
+  const { cardInfo } = useContext(CardContextData);
 
   return (
     <header className="flex justify-between items-center">
