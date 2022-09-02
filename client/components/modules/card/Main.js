@@ -63,7 +63,7 @@ function CardPageMain({ cardId }) {
             <h1 className="mb-2">CARD INFORMATION</h1>
 
             {/* Legalities */}
-            <section className="flex space-x-3 items-center mb-3">
+            <section className="flex space-x-3 items-center mb-6">
               {cardInfo &&
                 Object.keys(cardInfo?.set?.legality).map((legality, i) => {
                   const isLegal = cardInfo?.set?.legality[legality];
@@ -78,7 +78,7 @@ function CardPageMain({ cardId }) {
                       right={{
                         content: String(isLegal),
                         textColor: isLegal ? "text-white" : "text-black",
-                        bgColor: isLegal ? "bg-lime-600" : "bg-white",
+                        bgColor: isLegal ? "bg-lime-500" : "bg-gray-300",
                       }}
                     />
                   );
