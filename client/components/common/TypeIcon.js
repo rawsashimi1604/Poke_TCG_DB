@@ -1,5 +1,6 @@
 import React from "react";
 import types from "@/lib/constants/types";
+import { motion } from "framer-motion";
 
 const typeColorMapping = {
   Colorless: types.COLORLESS,
@@ -17,23 +18,26 @@ const typeColorMapping = {
 
 function TypeIcon({ type = "", size = 8 }) {
   return (
-    <div
-      className={`p-2 flex items-center justify-center rounded-[100px]`}
-      style={{
-        backgroundColor: [typeColorMapping[type]],
-        boxShadow: `0px 0px 10px ${typeColorMapping[type]}`,
-        height: `${size * 4}px`,
-        width: `${size * 4}px`,
-      }}
-    >
-      <img
-        src={`/assets/types/${type}.svg`}
+    <motion.div whileHover={{ scale: 1.05 }}>
+      <div
+        className={`flex items-center justify-center rounded-[100px]`}
         style={{
+          backgroundColor: [typeColorMapping[type]],
+          boxShadow: `0px 0px 10px ${typeColorMapping[type]}`,
+          padding: `${size}px`,
           height: `${size * 4}px`,
           width: `${size * 4}px`,
         }}
-      />
-    </div>
+      >
+        <img
+          src={`/assets/types/${type}.svg`}
+          style={{
+            height: `${size * 4}px`,
+            width: `${size * 4}px`,
+          }}
+        />
+      </div>
+    </motion.div>
   );
 }
 

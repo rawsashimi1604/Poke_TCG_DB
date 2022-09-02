@@ -1,3 +1,5 @@
+// Possible Pokemon Trading Card Types
+
 export default {
   COLORLESS: "#A0A29F",
   DARKNESS: "#595761",
