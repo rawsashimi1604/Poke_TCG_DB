@@ -132,7 +132,7 @@ function getById(id) {
   }
 }
 
-function getAllCardsByType(type) {
+function getAllCardsByType(type, qty) {
   try {
     const query = `
     SELECT json_build_object(
@@ -157,8 +157,9 @@ function getAllCardsByType(type) {
     JOIN card_type ON card.card_id = card_type.card_id 
     JOIN type ON card_type.type_id = type.type_id
     WHERE type.type = $1
+    LIMIT $2 
     `;
-    const params = [type];
+    const params = [type, qty];
     return db.query(query, params);
   } catch (err) {
     console.log(err);

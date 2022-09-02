@@ -104,11 +104,12 @@ async function handleAllCardsFromSetId(req, res) {
 // GET all cards by type
 async function handleAllCardsByType(req, res) {
   const type = req.params.type;
+  const qty = req.query.quantity;
 
   // Format type to capital case
   const formattedType = type[0].toUpperCase() + type.slice(1).toLowerCase();
 
-  const queryRes = await CardQuery.getAllCardsByType(formattedType);
+  const queryRes = await CardQuery.getAllCardsByType(formattedType, qty);
   res.send(
     await Promise.all(
       queryRes.rows.map(async (card) => await buildCardJSON(card))
