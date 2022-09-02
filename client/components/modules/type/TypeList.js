@@ -10,9 +10,9 @@ import { TypeContextData } from "@/contexts/TypeContext";
 import TypeIcon from "@/components/common/TypeIcon";
 
 function getTypeIconSize(width) {
-  if (width <= breakpoints.SMALL) return 16;
-  else if (width <= breakpoints.MEDIUM) return 22;
-  else if (width <= breakpoints.LARGE) return 30;
+  if (width <= breakpoints.SMALL) return 30;
+  else if (width <= breakpoints.MEDIUM) return 25;
+  else if (width <= breakpoints.LARGE) return 27.5;
   else if (width <= breakpoints.EXTRA_LARGE) return 38;
   else if (width <= breakpoints.DOUBLE_EXTRA_LARGE) return 44;
   else return 48;
@@ -23,7 +23,7 @@ function TypeList() {
   const { types } = useContext(TypeContextData);
 
   return (
-    <div className="flex flex-row flex-wrap gap-10 w-[80%]">
+    <div className="flex flex-row flex-wrap gap-10 items-center justify-center md:w-[80%]">
       {types &&
         types.map((type, i) => {
           return (
