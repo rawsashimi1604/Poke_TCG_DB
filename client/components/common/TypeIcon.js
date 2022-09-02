@@ -1,17 +1,18 @@
 import React from "react";
+import types from "@/lib/constants/types";
 
 const typeColorMapping = {
-  Colorless: "#A0A29F",
-  Darkness: "#595761",
-  Dragon: "#0C69C8",
-  Fairy: "#EE90E6",
-  Fighting: "#D3425F",
-  Fire: "#FBA54C",
-  Grass: "#5FBD58",
-  Lightning: "#F2D94E",
-  Metal: "#5695A3",
-  Psychic: "#FA8581",
-  Water: "#539DDF",
+  Colorless: types.COLORLESS,
+  Darkness: types.DARKNESS,
+  Dragon: types.DRAGON,
+  Fairy: types.FAIRY,
+  Fighting: types.FIGHTING,
+  Fire: types.FIRE,
+  Grass: types.GRASS,
+  Lightning: types.LIGHTNING,
+  Metal: types.METAL,
+  Psychic: types.PSYCHIC,
+  Water: types.WATER,
 };
 
 function TypeIcon({ type = "" }) {

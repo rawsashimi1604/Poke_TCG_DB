@@ -5,6 +5,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 
 import HeaderText from "@/components/common/HeaderText";
+import DividerLine from "@/components/common/DividerLine";
 
 function Main() {
   const [sets, setSets] = useState(null);
@@ -20,9 +21,9 @@ function Main() {
   }, []);
 
   return (
-    <div className="flex-col space-y-4">
+    <div className="flex-col">
       <HeaderText text="Browse By Set" />
-      <hr className="border-t-2 border-gray-300" />
+      <DividerLine />
       <section className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
         {sets &&
           sets.map((set, i) => {

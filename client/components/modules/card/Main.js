@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "@/components/modules/card/Header";
 import CardInformation from "@/components/modules/card/CardInformation";
 import TCGPlayerInformation from "./TCGPlayerInformation";
+import DividerLine from "@/components/common/DividerLine";
 
 function CardPageMain({ cardId = "" }) {
   const [cardInfo, setCardInfo] = useState(null);
@@ -29,7 +30,7 @@ function CardPageMain({ cardId = "" }) {
           <h1 className="mb-2">CARD INFORMATION</h1>
           <CardInformation cardInfo={cardInfo} />
 
-          <hr className="border-t-2 border-gray-300 mb-4" />
+          <DividerLine />
 
           <h1 className="mb-2">PRICING BY TCG PLAYER</h1>
           <TCGPlayerInformation cardInfo={cardInfo} />
