@@ -3,7 +3,6 @@ import Link from "next/link";
 import axios from "axios";
 import { convertTimestampToDate } from "../../lib/timestamp";
 
-import useWindowDimensions from "../../hooks/useWindowDimensions";
 import HeaderText from "../components/HeaderText";
 import TypeIcon from "../components/TypeIcon";
 
@@ -200,7 +199,7 @@ function CardPageMain({ cardId }) {
           {/* Pokemon Card IMG */}
           <img
             src={cardInfo?.images.large_img}
-            className={`${width > 1280 ? "w-96" : "w-64"} self-start`}
+            className={`w-64 xl:w-96 self-start`}
           />
         </div>
       </div>
