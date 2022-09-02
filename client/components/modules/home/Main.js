@@ -1,15 +1,15 @@
 import React from "react";
 
-import Header from "@/components/layouts/Header";
-import Body from "./Body";
+import Header from "@/components/modules/home/Header";
+import Body from "@/components/modules/home/Body";
 
 function Main({}) {
   return (
-    <div className="flex-col">
+    <main className="flex-col">
       {/* Section with about info */}
       <Header />
       <Body />
-    </div>
+    </main>
   );
 }
 

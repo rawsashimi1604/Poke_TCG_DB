@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 import Layout from "@/components/layouts/Layout";
-import Sidebar from "@/components/layouts/Sidebar";
-import Main from "@/components/layouts/Main";
+import Main from "@/components/modules/home/Main";
 
 export default function Home() {
   return (

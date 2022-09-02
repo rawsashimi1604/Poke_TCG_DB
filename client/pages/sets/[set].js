@@ -1,9 +1,8 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-import Sidebar from "@/components/layouts/Sidebar";
 import Layout from "@/components/layouts/Layout";
-import SetPageMain from "@/components/layouts/SetPageMain";
+import Main from "@/components/modules/set/Main";
 
 function SetPage() {
   const router = useRouter();
@@ -12,7 +11,7 @@ function SetPage() {
   return (
     <div className="font-inter">
       <Layout>
-        <SetPageMain setId={set} />
+        <Main setId={set} />
       </Layout>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
-import { convertTimestampToDate } from "../../lib/timestamp";
+import { convertTimestampToDate } from "../../../lib/timestamp";
 
 import LoadingScreen from "@/components/utils/LoadingScreen";
 import InfoWidget from "@/components/common/InfoWidget";

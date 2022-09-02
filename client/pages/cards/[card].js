@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 
 import Layout from "@/components/layouts/Layout";
-import CardPageMain from "@/components/layouts/CardPageMain";
+import Main from "@/components/modules/card/Main";
 
 function CardPage() {
   const router = useRouter();
@@ -11,7 +11,7 @@ function CardPage() {
   return (
     <div className="font-inter">
       <Layout>
-        <CardPageMain cardId={card} />
+        <Main cardId={card} />
       </Layout>
     </div>
   );

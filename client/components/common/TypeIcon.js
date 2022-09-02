@@ -17,10 +17,11 @@ function TypeIcon({ type }) {
 
   return (
     <div
-      className={`
-      bg-[${typeColorMapping[type]}] 
-      shadow-[${typeColorMapping[type]}] 
-      p-2 h-8 w-8 flex items-center justify-center rounded-[100px] shadow-2xl`}
+      className="p-2 h-8 w-8 flex items-center justify-center rounded-[100px]"
+      style={{
+        backgroundColor: [typeColorMapping[type]],
+        boxShadow: `0px 0px 10px ${typeColorMapping[type]}`,
+      }}
     >
       <img src={`/assets/types/${type}.svg`} className="h-8 w-8" />
     </div>

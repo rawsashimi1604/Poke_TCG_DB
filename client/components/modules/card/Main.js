@@ -5,6 +5,7 @@ import { convertTimestampToDate } from "@/lib/timestamp";
 
 import HeaderText from "@/components/common/HeaderText";
 import TypeIcon from "@/components/common/TypeIcon";
+import InfoWidget from "@/components/common/InfoWidget";
 
 function CardPageMain({ cardId }) {
   const [cardInfo, setCardInfo] = useState(null);
@@ -59,7 +60,31 @@ function CardPageMain({ cardId }) {
         <div className="flex flex-col lg:flex-row lg:justify-between gap-x-5">
           {/* Information... */}
           <div className="flex flex-col border-t-2 border-gray-300 flex-grow-1 w-full pt-4">
-            <div className="mb-2">CARD INFORMATION</div>
+            <h1 className="mb-2">CARD INFORMATION</h1>
+
+            {/* Legalities */}
+            <section className="flex space-x-3 items-center mb-3">
+              {cardInfo &&
+                Object.keys(cardInfo?.set?.legality).map((legality, i) => {
+                  const isLegal = cardInfo?.set?.legality[legality];
+
+                  return (
+                    <InfoWidget
+                      left={{
+                        content: legality,
+                        textColor: "text-gray-100",
+                        bgColor: "bg-gray-900",
+                      }}
+                      right={{
+                        content: String(isLegal),
+                        textColor: isLegal ? "text-white" : "text-black",
+                        bgColor: isLegal ? "bg-lime-600" : "bg-white",
+                      }}
+                    />
+                  );
+                })}
+            </section>
+
             <section className="flex-col space-y-6 mb-4">
               {cardInfo?.supertype === "Pokémon" && (
                 <div className="grid grid-cols-3">
@@ -67,8 +92,9 @@ function CardPageMain({ cardId }) {
                     <HeaderText text="TYPE" />
                     <div className="flex space-x-4">
                       {cardInfo?.types.map((type, i) => {
+                        console.log(`Type : ${type}`);
                         return (
-                          <div className="flex items-center space-x-2">
+                          <div className="flex items-center space-x-2" key={i}>
                             <TypeIcon type={type} />
                             <span className="text-lg">{type}</span>
                           </div>
@@ -118,32 +144,11 @@ function CardPageMain({ cardId }) {
                   </div>
                 </div>
               )}
-
-              <div className="grid grid-cols-3">
-                <div className="flex flex-col">
-                  <HeaderText text="UNLIMITED LEGALITY" />
-                  <span>
-                    {String(cardInfo?.set?.legality?.unlimited).toUpperCase()}
-                  </span>
-                </div>
-                <div className="flex flex-col">
-                  <HeaderText text="STANDARD LEGALITY" />
-                  <span>
-                    {String(cardInfo?.set?.legality?.standard).toUpperCase()}
-                  </span>
-                </div>
-                <div className="flex flex-col">
-                  <HeaderText text="EXPANDED LEGALITY" />
-                  <span>
-                    {String(cardInfo?.set?.legality?.expanded).toUpperCase()}
-                  </span>
-                </div>
-              </div>
             </section>
 
             <hr className="border-t-2 border-gray-300 mb-4" />
 
-            <div className="mb-2">PRICING BY TCG PLAYER</div>
+            <h1 className="mb-2">PRICING BY TCG PLAYER</h1>
             <section>
               {cardInfo?.prices.map((price, i) => {
                 return (
