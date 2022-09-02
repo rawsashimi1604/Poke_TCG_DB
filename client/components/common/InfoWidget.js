@@ -1,6 +1,6 @@
 import React from "react";
 
-function InfoWidget({ left, right }) {
+function InfoWidget({ left = "", right = "" }) {
   return (
     <div className="flex font-quicksand text-xs">
       <div

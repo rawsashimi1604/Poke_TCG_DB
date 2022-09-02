@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-function PokeCard({ data }) {
+function PokeCard({ data = {} }) {
   return (
     <>
       <motion.div whileHover={{ scale: 1.05 }}>

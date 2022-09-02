@@ -7,7 +7,7 @@ import HeaderText from "@/components/common/HeaderText";
 import TypeIcon from "@/components/common/TypeIcon";
 import InfoWidget from "@/components/common/InfoWidget";
 
-function CardPageMain({ cardId }) {
+function CardPageMain({ cardId = "" }) {
   const [cardInfo, setCardInfo] = useState(null);
 
   async function fetchCardInformation() {

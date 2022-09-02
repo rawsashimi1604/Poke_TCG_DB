@@ -14,7 +14,7 @@ const typeColorMapping = {
   Water: "#539DDF",
 };
 
-function TypeIcon({ type }) {
+function TypeIcon({ type = "" }) {
   return (
     <div
       className="p-2 h-8 w-8 flex items-center justify-center rounded-[100px]"
