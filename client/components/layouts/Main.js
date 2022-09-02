@@ -1,6 +1,6 @@
 import React from "react";
 
-import Header from "./Header";
+import Header from "@/components/layouts/Header";
 import Body from "./Body";
 
 function Main({}) {

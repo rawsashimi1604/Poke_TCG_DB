@@ -1,9 +1,8 @@
 import React from "react";
 
-import Card from "../components/Card";
-import InfoCard from "../components/InfoCard";
-import LandingCard from "../components/LandingCard";
-import HeaderText from "../components/HeaderText";
+import InfoCard from "@/components/common/InfoCard";
+import LandingCard from "@/components/common/LandingCard";
+import HeaderText from "@/components/common/HeaderText";
 
 function Header() {
   return (

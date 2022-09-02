@@ -1,6 +1,6 @@
 import React from "react";
 
-import Sidebar from "./Sidebar";
+import Sidebar from "@/components/layouts/Sidebar";
 
 function Layout({ children }) {
   return (

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
-import { convertTimestampToDate } from "../../lib/timestamp";
+import { convertTimestampToDate } from "@/lib/timestamp";
 
-import HeaderText from "../components/HeaderText";
-import TypeIcon from "../components/TypeIcon";
+import HeaderText from "@/components/common/HeaderText";
+import TypeIcon from "@/components/common/TypeIcon";
 
 function CardPageMain({ cardId }) {
-  const { height, width } = useWindowDimensions();
   const [cardInfo, setCardInfo] = useState(null);
 
   async function fetchCardInformation() {

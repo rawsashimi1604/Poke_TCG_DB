@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
-import { convertTimestampToDate } from "../../lib/timestamp";
 
 import { motion } from "framer-motion";
 
-import HeaderText from "../components/HeaderText";
+import HeaderText from "@/components/common/HeaderText";
 
 function SetMain() {
   const [sets, setSets] = useState(null);

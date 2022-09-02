@@ -4,7 +4,7 @@ import Link from "next/link";
 import { HomeIcon, CircleStackIcon } from "@heroicons/react/24/solid";
 import { AiOutlineSearch, AiFillGithub } from "react-icons/ai";
 import { CgShapeHexagon } from "react-icons/cg";
-import Logo from "../components/Logo";
+import Logo from "@/components/common/Logo";
 
 function Sidebar() {
   const menuLinkMapping = [

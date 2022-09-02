@@ -3,9 +3,9 @@ import Link from "next/link";
 import axios from "axios";
 import { convertTimestampToDate } from "../../lib/timestamp";
 
-import LoadingScreen from "../utils/LoadingScreen";
-import InfoWidget from "../components/InfoWidget";
-import PokeCard from "../components/PokeCard";
+import LoadingScreen from "@/components/utils/LoadingScreen";
+import InfoWidget from "@/components/common/InfoWidget";
+import PokeCard from "@/components/common/PokeCard";
 
 function SetPageMain({ setId }) {
   const [cards, setCards] = useState(null);

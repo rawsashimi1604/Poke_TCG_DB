@@ -1,8 +1,8 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-import Layout from "../../components/layouts/Layout";
-import CardPageMain from "../../components/layouts/CardPageMain";
+import Layout from "@/components/layouts/Layout";
+import CardPageMain from "@/components/layouts/CardPageMain";
 
 function CardPage() {
   const router = useRouter();

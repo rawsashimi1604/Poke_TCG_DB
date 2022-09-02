@@ -1,9 +1,9 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-import Sidebar from "../../components/layouts/Sidebar";
-import Layout from "../../components/layouts/Layout";
-import SetPageMain from "../../components/layouts/SetPageMain";
+import Sidebar from "@/components/layouts/Sidebar";
+import Layout from "@/components/layouts/Layout";
+import SetPageMain from "@/components/layouts/SetPageMain";
 
 function SetPage() {
   const router = useRouter();

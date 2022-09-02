@@ -1,8 +1,7 @@
 import React from "react";
 
-import Layout from "../components/layouts/Layout";
-import Sidebar from "../components/layouts/Sidebar";
-import SetMain from "../components/layouts/SetMain";
+import Layout from "@/components/layouts/Layout";
+import SetMain from "@/components/layouts/SetMain";
 
 function Sets() {
   return (

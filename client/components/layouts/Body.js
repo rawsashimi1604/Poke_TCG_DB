@@ -3,8 +3,8 @@ import axios from "axios";
 
 import { motion } from "framer-motion";
 
-import PokeCard from "../components/PokeCard";
-import HeaderText from "../components/HeaderText";
+import PokeCard from "@/components/common/PokeCard";
+import HeaderText from "@/components/common/HeaderText";
 
 const NUMBER_OF_CARDS = 20;
 

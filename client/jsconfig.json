@@ -1,0 +1,12 @@
+// Allow for absolute imports
+
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/lib/*": ["lib/*"],
+      "@/pages/*": ["pages/*"]
+    }
+  }
+}
