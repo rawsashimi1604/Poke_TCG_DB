@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import HeaderText from "@/components/common/HeaderText";
 
 function Main() {
-  return <div>Type Main</div>;
+  return <div>Search Main</div>;
 }
 
 export default Main;

@@ -16,12 +16,12 @@ const menuLinkMapping = [
   {
     icon: <CgShapeHexagon className="w-10 h-10" />,
     label: "Browse By Type",
-    href: "#",
+    href: "/types",
   },
   {
     icon: <AiOutlineSearch className="w-10 h-10" />,
     label: "Search",
-    href: "#",
+    href: "/search",
   },
   {
     icon: <AiFillGithub className="w-10 h-10" />,
