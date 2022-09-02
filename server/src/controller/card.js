@@ -101,10 +101,26 @@ async function handleAllCardsFromSetId(req, res) {
   );
 }
 
+// GET all cards by type
+async function handleAllCardsByType(req, res) {
+  const type = req.params.type;
+
+  // Format type to capital case
+  const formattedType = type[0].toUpperCase() + type.slice(1).toLowerCase();
+
+  const queryRes = await CardQuery.getAllCardsByType(formattedType);
+  res.send(
+    await Promise.all(
+      queryRes.rows.map(async (card) => await buildCardJSON(card))
+    )
+  );
+}
+
 export default {
   handleIndex,
   handleAllCards,
   handleCardCount,
   handleSpecificCardByCardId,
   handleAllCardsFromSetId,
+  handleAllCardsByType,
 };

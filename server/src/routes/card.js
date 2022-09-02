@@ -14,5 +14,6 @@ router.get("/all", CardController.handleAllCards);
 router.get("/count", CardController.handleCardCount);
 router.get("/:cardId", CardController.handleSpecificCardByCardId);
 router.get("/set/:set", CardController.handleAllCardsFromSetId);
+router.get("/type/:type", CardController.handleAllCardsByType);
 
 export default router;

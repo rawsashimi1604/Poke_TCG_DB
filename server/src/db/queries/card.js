@@ -132,10 +132,44 @@ function getById(id) {
   }
 }
 
+function getAllCardsByType(type) {
+  try {
+    const query = `
+    SELECT json_build_object(
+      'card_id', card.card_id,
+      'card_name', card.card_name,
+      'number', card.number,
+      'set_id', card.set_id,
+      'supertype', supertype.supertype,
+      'artist', card.artist,
+      'hp', card.hp,
+      'rarity', rarity.rarity,
+      'flavor_text', card.flavor_text,
+      'images', json_build_object(
+        'small_img', card.small_img,
+        'large_img', card.large_img
+      )
+    )
+    AS data
+    FROM card
+    LEFT JOIN supertype ON card.supertype_id = supertype.supertype_id 
+    LEFT JOIN rarity ON card.rarity_id = rarity.rarity_id
+    JOIN card_type ON card.card_id = card_type.card_id 
+    JOIN type ON card_type.type_id = type.type_id
+    WHERE type.type = $1
+    `;
+    const params = [type];
+    return db.query(query, params);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export default {
   getAllCards,
   getCardQuantity,
   getBySet,
   getById,
   getCardsByQuantity,
+  getAllCardsByType,
 };
