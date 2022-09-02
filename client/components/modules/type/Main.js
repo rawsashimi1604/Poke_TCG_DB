@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import axios from "axios";
+import React, { useContext } from "react";
 
 import HeaderText from "@/components/common/HeaderText";
-import DividerLine from "@/components/common/DividerLine";
-import Body from "@/components/modules/type/Body";
 
-function Main() {
+function Main({ type }) {
   return (
-    <>
-      <HeaderText text="Browse By Type" />
-      <DividerLine />
-      <Body />
-    </>
+    <div>
+      <HeaderText text={`Browse by Type: ${type}`} />
+    </div>
   );
 }
 

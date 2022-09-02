@@ -1,6 +1,6 @@
 import React from "react";
 
-import TypeList from "@/components/modules/type/TypeList";
+import TypeList from "@/components/modules/typeHome/TypeList";
 
 function Body() {
   return (

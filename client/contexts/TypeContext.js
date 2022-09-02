@@ -3,24 +3,10 @@ import axios from "axios";
 
 export const TypeContextData = createContext(null);
 
-export function TypeContext({ children, setId }) {
-  const [types, setTypes] = useState(null);
-
-  async function fetchTypes() {
-    const res = await axios.get(`http://localhost:3000/api/types/all`);
-    const typesData = await res.data;
-    setTypes(typesData);
-  }
-
-  useEffect(() => {
-    fetchTypes();
-  }, []);
-
+export function TypeContext({ children, type }) {
   return (
     <TypeContextData.Provider
-      value={{
-        types,
-      }} // value of your context
+      value={{}} // value of your context
     >
       {children}
     </TypeContextData.Provider>

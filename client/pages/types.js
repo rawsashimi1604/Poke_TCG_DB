@@ -1,17 +1,17 @@
 import React from "react";
 
-import { TypeContext } from "@/contexts/TypeContext";
+import { TypeHomeContext } from "@/contexts/TypeHomeContext";
 import Layout from "@/components/layouts/Layout";
-import Main from "@/components/modules/type/Main";
+import Main from "@/components/modules/typeHome/Main";
 
 function Types() {
   return (
     <div className="font-inter">
-      <TypeContext>
+      <TypeHomeContext>
         <Layout>
           <Main />
         </Layout>
-      </TypeContext>
+      </TypeHomeContext>
     </div>
   );
 }

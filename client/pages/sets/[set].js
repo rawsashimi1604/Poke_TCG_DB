@@ -13,7 +13,7 @@ function SetPage() {
     <div className="font-inter">
       <SetContext setId={set}>
         <Layout>
-          <Main setId={set} />
+          <Main />
         </Layout>
       </SetContext>
     </div>
