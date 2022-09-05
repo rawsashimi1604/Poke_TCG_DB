@@ -195,7 +195,7 @@ function getAllCardsBySearch(queryObj) {
 
       // Add to WHERE based on foreign key/key
       if (key === "card_name") {
-        where.push(`${key} LIKE $${count}`);
+        where.push(`LOWER(${key}) LIKE LOWER($${count})`);
         params.push(`%${queryObj[key]}%`);
       } else if (key === "type_id") {
         where.push(`card_type.${key} = $${count}`);
