@@ -20,8 +20,8 @@ const devConfig = {
 const proConfig = {
   connectionString: process.env.DATABASE_URL, // Heroku addons
   ssl: {
-    rejectUnauthorized: false
-  }
+    rejectUnauthorized: false,
+  },
 };
 
 export default new pg.Pool(
