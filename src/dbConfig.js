@@ -7,8 +7,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
-console.log(process.env.PG_PASSWORD);
-
 const devConfig = {
   user: process.env.PG_USER,
   host: process.env.PG_HOST,
