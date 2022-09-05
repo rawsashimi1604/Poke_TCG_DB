@@ -12,7 +12,7 @@ import supertypeRouter from "./routes/supertype.js";
 import ErrorMiddleware from "./middleware/error.js";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Enable logging of request hits
 app.use(morgan("combined"));

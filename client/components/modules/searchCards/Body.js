@@ -14,7 +14,7 @@ function Body() {
         {pokeCards &&
           pokeCards.map((card, i) => {
             return (
-              <div>
+              <div key={i}>
                 <PokeCard data={card} key={i} />
               </div>
             );

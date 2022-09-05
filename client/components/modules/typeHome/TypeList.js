@@ -26,7 +26,7 @@ function TypeList() {
       {types &&
         types.map((type, i) => {
           return (
-            <a href={`/types/${type.type.toLowerCase()}`}>
+            <a href={`/types/${type.type.toLowerCase()}`} key={i}>
               <Tippy content={<span className="text-2xl">{type.type}</span>}>
                 <div className="cursor-pointer ">
                   <TypeIcon type={type.type} size={getTypeIconSize(width)} />

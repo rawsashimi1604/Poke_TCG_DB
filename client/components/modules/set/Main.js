@@ -105,6 +105,7 @@ function Main() {
 
                 return (
                   <InfoWidget
+                    key={i}
                     left={{
                       content: legality,
                       textColor: "text-gray-100",
@@ -124,7 +125,7 @@ function Main() {
             {cards &&
               cards.map((card, i) => {
                 return (
-                  <div>
+                  <div key={i}>
                     <PokeCard data={card} key={i} />
                   </div>
                 );

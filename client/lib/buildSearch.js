@@ -1,5 +1,5 @@
 export function clientBuildSearchURL(queryObj) {
-  let queryString = "http://localhost:5000/search/cards?";
+  let queryString = "/search/cards?";
 
   const keys = Object.keys(queryObj);
   for (let i = 0; i < keys.length; i++) {

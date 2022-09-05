@@ -11,7 +11,7 @@ function TCGPlayerInformation() {
     <section>
       {cardInfo?.prices.map((price, i) => {
         return (
-          <div className="mb-4">
+          <div className="mb-4" key={i}>
             <div className="flex items-center space-x-3">
               <HeaderText text={price.card_type.toUpperCase()} />
               <h2 className="text-gray-700 italic font-quicksand mb-1.5">
@@ -20,6 +20,7 @@ function TCGPlayerInformation() {
               <a
                 href={price.url}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="cursor-pointer px-2 py-1 bg-green-700 mb-1.5 rounded-lg transition-all duration-100 hover:bg-green-600 text-green-100 font-bold hover:underline"
               >
                 Buy now

@@ -1,10 +1,14 @@
 /* 
   Seed Pokemon TCG Sets using Pokemon TCG API.
 */
-import envConfig from "../../envConfig.js";
-import db from "../../dbConfig.js";
+import db from "../dbConfig.js";
 import pokemon from "pokemontcgsdk";
-import sleep from "../../lib/sleep.js";
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
 
 async function seedTCGSets() {
   // Data from Pokemon TCG API...

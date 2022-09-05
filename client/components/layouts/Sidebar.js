@@ -62,6 +62,7 @@ function Sidebar() {
               <a
                 href="https://github.com/rawsashimi1604/Poke_TCG_DB"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <div className="flex items-center p-2 space-x-5 rounded-md">
                   <div className="">

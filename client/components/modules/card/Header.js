@@ -17,12 +17,12 @@ function Header() {
         <h2 className="text-xl flex space-x-2">
           <span>{cardInfo?.supertype}</span>
           {cardInfo?.subtypes.map((subtype, i) => {
-            return <span>{subtype}</span>;
+            return <span key={i}>{subtype}</span>;
           })}
         </h2>
       </section>
 
-      <Link href={`http://localhost:5000/sets/${cardInfo?.set?.set_id}`}>
+      <Link href={`/sets/${cardInfo?.set?.set_id}`}>
         <div className="flex justify-between pb-5 cursor-pointer">
           <h1 className="flex gap-3 items-end">
             <img src={cardInfo?.set?.images.symbol_img} className="h-12 w-12" />

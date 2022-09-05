@@ -1,14 +1,21 @@
 /* 
   Seed Pokemon TCG Cards by Sets using Pokemon TCG API.
 */
-import envConfig from "../../envConfig.js";
-import db from "../../dbConfig.js";
+import dotenv from "dotenv";
+import db from "../dbConfig.js";
 import pokemon from "pokemontcgsdk";
-import sleep from "../../lib/sleep.js";
+
+dotenv.config();
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
 
 async function seedTCGCardsBySet() {
   // Use API KEY from Pokemon TCG API Developer Portal...
-  pokemon.configure({ apiKey: envConfig.POKE_API_TCG_KEY });
+  pokemon.configure({ apiKey: process.env.POKE_API_TCG_KEY });
 
   // Get all sets from DB..., 143 total sets...
   const sets = await db.query("SELECT set_id FROM card_set");

@@ -22,7 +22,7 @@ function Main() {
             {sets &&
               sets.map((set, i) => {
                 return (
-                  <Link href={`/sets/${set.set_id}`}>
+                  <Link href={`/sets/${set.set_id}`} key={i}>
                     <motion.div whileHover={{ scale: 1.05 }}>
                       <div className="flex gap-2 justify-center items-center p-5 border-[1px] border-gray-200 shadow-lg h-64 cursor-pointer">
                         <img src={set.images.logo_img} />

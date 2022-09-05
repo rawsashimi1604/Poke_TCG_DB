@@ -11,9 +11,9 @@ function LegalityList() {
       {cardInfo &&
         Object.keys(cardInfo.set.legality).map((legality, i) => {
           const isLegal = cardInfo.set.legality[legality];
-
           return (
             <InfoWidget
+              key={i}
               left={{
                 content: legality,
                 textColor: "text-gray-100",

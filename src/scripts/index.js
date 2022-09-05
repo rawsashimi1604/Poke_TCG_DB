@@ -8,7 +8,11 @@ import seedSet from "./set.js";
 import seedSupertype from "./supertype.js";
 import seedType from "./type.js";
 
-import sleep from "../../lib/sleep.js";
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
 
 seedType();
 sleep(2000);

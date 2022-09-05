@@ -33,7 +33,11 @@ function CardInformation() {
             <HeaderText text="POKEDEX NUMBER" />
             <div className="flex space-x-4">
               {cardInfo?.pokedexNumbers.map((num, i) => {
-                return <span className="text-lg mt-1">{num}</span>;
+                return (
+                  <span key={i} className="text-lg mt-1">
+                    {num}
+                  </span>
+                );
               })}
             </div>
           </div>
