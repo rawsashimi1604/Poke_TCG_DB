@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import {
@@ -9,6 +9,8 @@ import {
   MenuItem,
   FormControl,
 } from "@mui/material";
+
+import { SearchContextData } from "@/contexts/SearchContext";
 
 const validationSchema = yup.object({
   search: yup
@@ -23,6 +25,8 @@ const validationSchema = yup.object({
 });
 
 function Form() {
+  const { sets, types, supertypes, rarities } = useContext(SearchContextData);
+
   const formik = useFormik({
     initialValues: {
       search: "",
@@ -38,7 +42,7 @@ function Form() {
   });
 
   return (
-    <div>
+    <div className="pt-3">
       <form onSubmit={formik.handleSubmit} className="flex flex-col gap-5">
         {/* Keywords */}
         <TextField
@@ -55,7 +59,7 @@ function Form() {
         <div className="grid grid-cols-4 gap-3">
           {/* Set */}
           <FormControl fullWidth>
-            <InputLabel id="set-label">Age</InputLabel>
+            <InputLabel id="set-label">Set</InputLabel>
             <Select
               labelId="set-label"
               id="Set"
@@ -63,9 +67,14 @@ function Form() {
               value={formik.values.set}
               onChange={formik.handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {sets &&
+                sets.map((set, i) => {
+                  return (
+                    <MenuItem key={set.set_id} value={set.set_id}>
+                      {set.set_name}
+                    </MenuItem>
+                  );
+                })}
             </Select>
           </FormControl>
 
@@ -79,9 +88,14 @@ function Form() {
               value={formik.values.type}
               onChange={formik.handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {types &&
+                types.map((type, i) => {
+                  return (
+                    <MenuItem key={type.type_id} value={type.type_id}>
+                      {type.type}
+                    </MenuItem>
+                  );
+                })}
             </Select>
           </FormControl>
 
@@ -95,9 +109,17 @@ function Form() {
               value={formik.values.supertype}
               onChange={formik.handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {supertypes &&
+                supertypes.map((supertype, i) => {
+                  return (
+                    <MenuItem
+                      key={supertype.supertype_id}
+                      value={supertype.supertype_id}
+                    >
+                      {supertype.supertype}
+                    </MenuItem>
+                  );
+                })}
             </Select>
           </FormControl>
 
@@ -111,9 +133,14 @@ function Form() {
               value={formik.values.rarity}
               onChange={formik.handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {rarities &&
+                rarities.map((rarity, i) => {
+                  return (
+                    <MenuItem key={rarity.rarity_id} value={rarity.rarity_id}>
+                      {rarity.rarity}
+                    </MenuItem>
+                  );
+                })}
             </Select>
           </FormControl>
         </div>

@@ -1,14 +1,17 @@
 import React from "react";
 
+import { SearchContext } from "@/contexts/SearchContext";
 import Layout from "@/components/layouts/Layout";
 import Main from "@/components/modules/search/Main";
 
 function Search() {
   return (
     <div className="font-inter">
-      <Layout>
-        <Main />
-      </Layout>
+      <SearchContext>
+        <Layout>
+          <Main />
+        </Layout>
+      </SearchContext>
     </div>
   );
 }

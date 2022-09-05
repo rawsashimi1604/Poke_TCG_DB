@@ -4,9 +4,16 @@ import axios from "axios";
 export const SearchContextData = createContext(null);
 
 export function SearchContext({ children }) {
+  const [sets, setSets] = useState(null);
   const [types, setTypes] = useState(null);
   const [supertypes, setSupertypes] = useState(null);
   const [rarities, setRarities] = useState(null);
+
+  async function fetchSetsData() {
+    const res = await axios.get(`http://localhost:3000/api/sets/all`);
+    const setsData = await res.data;
+    setSets(setsData);
+  }
 
   async function fetchTypesData() {
     const res = await axios.get(`http://localhost:3000/api/types/all`);
@@ -15,18 +22,19 @@ export function SearchContext({ children }) {
   }
 
   async function fetchSupertypesData() {
-    const res = await axios.get(`http://localhost:3000/api/types/all`);
-    const typesData = await res.data;
-    setSupertypes(typesData);
+    const res = await axios.get(`http://localhost:3000/api/supertypes/all`);
+    const supertypesData = await res.data;
+    setSupertypes(supertypesData);
   }
 
   async function fetchRaritiesData() {
-    const res = await axios.get(`http://localhost:3000/api/types/all`);
-    const typesData = await res.data;
-    setRarities(typesData);
+    const res = await axios.get(`http://localhost:3000/api/rarities/all`);
+    const raritiesData = await res.data;
+    setRarities(raritiesData);
   }
 
   useEffect(() => {
+    fetchSetsData();
     fetchTypesData();
     fetchSupertypesData();
     fetchRaritiesData();
@@ -34,7 +42,12 @@ export function SearchContext({ children }) {
 
   return (
     <SearchContextData.Provider
-      value={{}} // value of your context
+      value={{
+        sets,
+        types,
+        supertypes,
+        rarities,
+      }} // value of your context
     >
       {children}
     </SearchContextData.Provider>
