@@ -7,6 +7,7 @@ import cardRouter from "./routes/card.js";
 import setRouter from "./routes/set.js";
 import typeRouter from "./routes/type.js";
 import rarityRouter from "./routes/rarity.js";
+import supertypeRouter from "./routes/supertype.js";
 
 import ErrorMiddleware from "./middleware/error.js";
 
@@ -28,6 +29,7 @@ app.use(cors(corsOptions));
 app.use("/api/cards", cardRouter);
 app.use("/api/sets", setRouter);
 app.use("/api/types", typeRouter);
+app.use("/api/supertypes", supertypeRouter);
 app.use("/api/rarities", rarityRouter);
 
 // Default Route
