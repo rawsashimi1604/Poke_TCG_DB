@@ -187,10 +187,19 @@ function getAllCardsBySearch(queryObj) {
     // If key is an empty string, do not use
     if ("" === queryObj[key]) return;
 
-    // If key is card_name...
+    // Add to WHERE based on foreign key/key
     if (key === "card_name") {
       where.push(`${key} LIKE $${count}`);
       params.push(`%${queryObj[key]}%`);
+    } else if (key === "type_id") {
+      where.push(`card_type.${key} = $${count}`);
+      params.push(queryObj[key]);
+    } else if (key === "supertype_id") {
+      where.push(`supertype.${key} = $${count}`);
+      params.push(queryObj[key]);
+    } else if (key === "rarity_id") {
+      where.push(`rarity.${key} = $${count}`);
+      params.push(queryObj[key]);
     } else {
       where.push(`${key} = $${count}`);
       params.push(queryObj[key]);
@@ -221,7 +230,9 @@ function getAllCardsBySearch(queryObj) {
     AS data
     FROM card
     LEFT JOIN supertype ON card.supertype_id = supertype.supertype_id 
-    LEFT JOIN rarity ON card.rarity_id = rarity.rarity_id 
+    LEFT JOIN rarity ON card.rarity_id = rarity.rarity_id
+    JOIN card_type ON card.card_id = card_type.card_id 
+    JOIN type ON card_type.type_id = type.type_id
     ${where} 
   `;
   return db.query(query, params);

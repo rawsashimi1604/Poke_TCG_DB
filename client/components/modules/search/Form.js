@@ -85,7 +85,9 @@ function Form() {
               id="set_id"
               label="set_id"
               value={formik.values.set_id}
-              onChange={formik.handleChange}
+              onChange={(nextVal) =>
+                formik.setFieldValue("set_id", nextVal.target.value)
+              }
             >
               {sets &&
                 sets.map((set, i) => {
@@ -106,7 +108,9 @@ function Form() {
               id="type_id"
               label="type_id"
               value={formik.values.type_id}
-              onChange={formik.handleChange}
+              onChange={(nextVal) =>
+                formik.setFieldValue("type_id", nextVal.target.value)
+              }
             >
               {types &&
                 types.map((type, i) => {
@@ -127,7 +131,9 @@ function Form() {
               id="supertype_id"
               label="supertype_id"
               value={formik.values.supertype_id}
-              onChange={formik.handleChange}
+              onChange={(nextVal) =>
+                formik.setFieldValue("supertype_id", nextVal.target.value)
+              }
             >
               {supertypes &&
                 supertypes.map((supertype, i) => {
@@ -151,7 +157,9 @@ function Form() {
               id="rarity_id"
               label="rarity_id"
               value={formik.values.rarity_id}
-              onChange={formik.handleChange}
+              onChange={(nextVal) =>
+                formik.setFieldValue("rarity_id", nextVal.target.value)
+              }
             >
               {rarities &&
                 rarities.map((rarity, i) => {
