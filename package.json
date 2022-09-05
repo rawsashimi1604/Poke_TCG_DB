@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/app.js",
-    "beautify": "npx prettier --write ."
+    "start": "node src/app.js",
+    "beautify": "npx prettier --write .",
+    "dev": "nodemon src/app.js"
   },
   "engines": {
     "node": "16.17.0",
@@ -21,11 +22,11 @@
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "morgan": "^1.10.0",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "pokemontcgsdk": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.19",
-    "pokemontcgsdk": "^2.0.0",
     "prettier": "2.7.1"
   }
 }
