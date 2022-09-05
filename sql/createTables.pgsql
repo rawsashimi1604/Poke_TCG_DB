@@ -1,4 +1,5 @@
 -- Create All Tables needed
+\connect poke-tcg-db
 
 CREATE TABLE legality (
   legality_id BIGSERIAL PRIMARY KEY,
