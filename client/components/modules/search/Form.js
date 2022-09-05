@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 
 import { SearchContextData } from "@/contexts/SearchContext";
+import { clientBuildSearchURL } from "@/lib/buildSearch";
 
 const validationSchema = yup.object({
   card_name: yup
@@ -25,30 +26,13 @@ const validationSchema = yup.object({
   rarity_id: yup.string("Choose your rarity."),
 });
 
-function buildSearchURL(queryObj) {
-  let queryString = "http://localhost:5000/search/cards?";
-
-  const keys = Object.keys(queryObj);
-  for (let i = 0; i < keys.length; i++) {
-    // Join query string
-    queryString += `${keys[i]}=${queryObj[keys[i]]}`;
-
-    // If it is not the last element add & to join query string
-    if (i != keys.length - 1) {
-      queryString += "&";
-    }
-  }
-
-  return queryString;
-}
-
 function Form() {
   const router = useRouter();
   const { sets, types, supertypes, rarities } = useContext(SearchContextData);
 
   const formik = useFormik({
     initialValues: {
-      card_name: "Charizard",
+      card_name: "",
       set_id: "",
       type_id: "",
       supertype_id: "",
@@ -56,7 +40,7 @@ function Form() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      const searchRedirectURL = buildSearchURL(values);
+      const searchRedirectURL = clientBuildSearchURL(values);
       router.push(searchRedirectURL);
     },
   });
@@ -68,7 +52,7 @@ function Form() {
         <TextField
           fullWidth
           id="card_name"
-          name="card name"
+          name="card_name"
           label="Search by keywords"
           value={formik.values.card_name}
           onChange={formik.handleChange}

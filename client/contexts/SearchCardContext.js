@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from "react";
 import axios from "axios";
+import { serverBuildSearchURL } from "@/lib/buildSearch";
 
 export const SearchCardContextData = createContext(null);
 
@@ -7,21 +8,20 @@ export function SearchCardContext({ children, query }) {
   const [pokeCards, setPokeCards] = useState(null);
 
   async function fetchPokeCardsBySearch() {
-    const res = await axios.get(
-      `http://localhost:3000/api/cards/search?card_name=${query.card_name}&set_id=${query.set_id}&type_id=${query.type_id}&supertype_id=${query.supertype_id}&rarity_id=${query.rarity_id}`
-    );
+    const res = await axios.get(serverBuildSearchURL(query));
     const pokeCardsData = await res.data;
     setPokeCards(pokeCardsData);
   }
 
   useEffect(() => {
     fetchPokeCardsBySearch();
-  }, []);
+  }, [query]);
 
   return (
     <SearchCardContextData.Provider
       value={{
         pokeCards,
+        query,
       }} // value of your context
     >
       {children}
