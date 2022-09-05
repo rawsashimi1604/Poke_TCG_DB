@@ -6,12 +6,14 @@ import { motion } from "framer-motion";
 
 import HeaderText from "@/components/common/HeaderText";
 import DividerLine from "@/components/common/DividerLine";
+import Form from "@/components/modules/search/Form";
 
 function Main() {
   return (
     <>
       <HeaderText text="Search" />
       <DividerLine />
+      <Form />
     </>
   );
 }
