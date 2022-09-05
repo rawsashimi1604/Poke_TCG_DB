@@ -29,6 +29,7 @@ function getAllSets() {
     return db.query(query);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
 
@@ -38,6 +39,7 @@ function getSetQuantity() {
     return db.query(query);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
 
@@ -72,6 +74,7 @@ function getSetById(id) {
     return db.query(query, params);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
 

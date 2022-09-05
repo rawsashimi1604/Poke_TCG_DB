@@ -118,7 +118,7 @@ async function handleAllCardsByType(req, res) {
 }
 
 // GET all cards based on search params
-async function handleCardSearch(req, res) {
+async function handleCardSearch(req, res, next) {
   const queryRes = await CardQuery.getAllCardsBySearch(req.query);
   res.send(
     await Promise.all(

@@ -174,9 +174,12 @@ function Form() {
         </div>
         {/* Sets */}
 
-        <Button variant="contained" color="primary" type="submit">
-          Submit
-        </Button>
+        <button
+          type="submit"
+          className="w-full text-white bg-[#3f51b5] py-2 rounded-[20px] transition-all duration-200 shadow-lg hover:opacity-90 "
+        >
+          Search
+        </button>
       </form>
     </div>
   );

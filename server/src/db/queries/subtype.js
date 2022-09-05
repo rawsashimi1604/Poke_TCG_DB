@@ -6,6 +6,7 @@ function getAllSubtypes() {
     return db.query(query);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
 
@@ -16,6 +17,7 @@ function getSubtypesById(id) {
     return db.query(query, params);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
 

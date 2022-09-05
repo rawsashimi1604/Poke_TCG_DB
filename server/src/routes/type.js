@@ -1,5 +1,6 @@
 import express from "express";
 import TypeController from "../controller/type.js";
+import asyncErrorHandler from "../lib/asyncErrorHandler.js";
 
 const router = express.Router();
 
@@ -10,6 +11,6 @@ router.use((req, res, next) => {
 
 // Routes
 router.get("/", TypeController.handleIndex);
-router.get("/all", TypeController.handleAllTypes);
+router.get("/all", asyncErrorHandler(TypeController.handleAllTypes));
 
 export default router;

@@ -6,6 +6,7 @@ function getAllTCGPlayerPrices() {
     return db.query(query);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
 
@@ -16,6 +17,7 @@ function getTCGPlayerPriceById(id) {
     return db.query(query, params);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
 

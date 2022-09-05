@@ -6,6 +6,7 @@ function getAllTypes() {
     return db.query(query);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
 
@@ -21,6 +22,7 @@ function getCardTypesById(id) {
     return db.query(query, params);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
 

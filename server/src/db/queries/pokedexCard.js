@@ -6,6 +6,7 @@ function getAllPokedexCards() {
     return db.query(query);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
 
@@ -19,6 +20,7 @@ function getPokedexByCardId(id) {
     return db.query(query, params);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
 

@@ -1,5 +1,6 @@
 import express from "express";
 import RarityController from "../controller/rarity.js";
+import asyncErrorHandler from "../lib/asyncErrorHandler.js";
 
 const router = express.Router();
 
@@ -10,6 +11,6 @@ router.use((req, res, next) => {
 
 // Routes
 router.get("/", RarityController.handleIndex);
-router.get("/all", RarityController.handleAllRarities);
+router.get("/all", asyncErrorHandler(RarityController.handleAllRarities));
 
 export default router;

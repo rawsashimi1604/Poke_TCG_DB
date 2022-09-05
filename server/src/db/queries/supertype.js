@@ -6,6 +6,7 @@ function getAllSupertypes() {
     return db.query(query);
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
 
