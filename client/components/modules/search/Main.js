@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import axios from "axios";
+import React, { useEffect, useState, useContext } from "react";
 
-import { motion } from "framer-motion";
-
+import { SearchContextData } from "@/contexts/SearchContext";
+import LoadingScreen from "@/components/utils/LoadingScreen";
 import HeaderText from "@/components/common/HeaderText";
 import DividerLine from "@/components/common/DividerLine";
 import Form from "@/components/modules/search/Form";
 
 function Main() {
+  const { sets, types, supertypes, rarities } = useContext(SearchContextData);
+
   return (
     <>
-      <HeaderText text="Search" />
-      <DividerLine />
-      <Form />
+      {sets && types && supertypes && rarities ? (
+        <>
+          <HeaderText text="Search" />
+          <DividerLine />
+          <Form />
+        </>
+      ) : (
+        <LoadingScreen />
+      )}
     </>
   );
 }

@@ -58,12 +58,15 @@ function Sidebar() {
                 </li>
               );
             })}
-            <li
-              className="rounded-sm cursor-pointer hover:bg-gray-700 hover"
-            >
-              <a href="https://github.com/rawsashimi1604/Poke_TCG_DB" target="_blank">
+            <li className="rounded-sm cursor-pointer hover:bg-gray-700 hover">
+              <a
+                href="https://github.com/rawsashimi1604/Poke_TCG_DB"
+                target="_blank"
+              >
                 <div className="flex items-center p-2 space-x-5 rounded-md">
-                  <div className=""><AiFillGithub className="w-10 h-10" /></div>
+                  <div className="">
+                    <AiFillGithub className="w-10 h-10" />
+                  </div>
                   <span className="hidden sm:flex lg:text-md xl:text-lg">
                     Github
                   </span>
