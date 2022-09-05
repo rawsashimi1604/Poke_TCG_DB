@@ -117,6 +117,15 @@ async function handleAllCardsByType(req, res) {
   );
 }
 
+async function handleCardSearch(req, res) {
+  const queryRes = await CardQuery.getAllCardsBySearch(req.query);
+  res.send(
+    await Promise.all(
+      queryRes.rows.map(async (card) => await buildCardJSON(card))
+    )
+  );
+}
+
 export default {
   handleIndex,
   handleAllCards,
@@ -124,4 +133,5 @@ export default {
   handleSpecificCardByCardId,
   handleAllCardsFromSetId,
   handleAllCardsByType,
+  handleCardSearch,
 };

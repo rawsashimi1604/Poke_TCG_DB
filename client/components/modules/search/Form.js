@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import {
@@ -13,31 +14,50 @@ import {
 import { SearchContextData } from "@/contexts/SearchContext";
 
 const validationSchema = yup.object({
-  search: yup
+  card_name: yup
     .string("Enter your search keywords here.")
     .min(2, "Minimum of 2 characters required.")
     .max(50, "Maximum of 50 characters.")
-    .required("Field is required."),
-  set: yup.string("Choose your set."),
-  type: yup.string("Choose your type."),
-  supertype: yup.string("Choose your supertype."),
-  rarity: yup.string("Choose your rarity."),
+    .required("Card name is required."),
+  set_id: yup.string("Choose your set."),
+  type_id: yup.string("Choose your type."),
+  supertype_id: yup.string("Choose your supertype."),
+  rarity_id: yup.string("Choose your rarity."),
 });
 
+function buildSearchURL(queryObj) {
+  let queryString = "http://localhost:5000/search/cards?";
+
+  const keys = Object.keys(queryObj);
+  for (let i = 0; i < keys.length; i++) {
+    // Join query string
+    queryString += `${keys[i]}=${queryObj[keys[i]]}`;
+
+    // If it is not the last element add & to join query string
+    if (i != keys.length - 1) {
+      queryString += "&";
+    }
+  }
+
+  return queryString;
+}
+
 function Form() {
+  const router = useRouter();
   const { sets, types, supertypes, rarities } = useContext(SearchContextData);
 
   const formik = useFormik({
     initialValues: {
-      search: "",
-      set: "",
-      type: "",
-      supertype: "",
-      rarity: "",
+      card_name: "Charizard",
+      set_id: "",
+      type_id: "",
+      supertype_id: "",
+      rarity_id: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      const searchRedirectURL = buildSearchURL(values);
+      router.push(searchRedirectURL);
     },
   });
 
@@ -47,13 +67,13 @@ function Form() {
         {/* Keywords */}
         <TextField
           fullWidth
-          id="Search"
-          name="search"
+          id="card_name"
+          name="card name"
           label="Search by keywords"
-          value={formik.values.search}
+          value={formik.values.card_name}
           onChange={formik.handleChange}
-          error={formik.touched.search && Boolean(formik.errors.search)}
-          helperText={formik.touched.search && formik.errors.search}
+          error={formik.touched.card_name && Boolean(formik.errors.card_name)}
+          helperText={formik.touched.card_name && formik.errors.card_name}
         />
 
         <div className="grid grid-cols-4 gap-3">
@@ -62,9 +82,9 @@ function Form() {
             <InputLabel id="set-label">Set</InputLabel>
             <Select
               labelId="set-label"
-              id="Set"
-              label="Set"
-              value={formik.values.set}
+              id="set_id"
+              label="set_id"
+              value={formik.values.set_id}
               onChange={formik.handleChange}
             >
               {sets &&
@@ -83,9 +103,9 @@ function Form() {
             <InputLabel id="type-label">Type</InputLabel>
             <Select
               labelId="type-label"
-              id="Type"
-              label="Type"
-              value={formik.values.type}
+              id="type_id"
+              label="type_id"
+              value={formik.values.type_id}
               onChange={formik.handleChange}
             >
               {types &&
@@ -104,9 +124,9 @@ function Form() {
             <InputLabel id="supertype-label">Supertype</InputLabel>
             <Select
               labelId="supertype-label"
-              id="Supertype"
-              label="Supertype"
-              value={formik.values.supertype}
+              id="supertype_id"
+              label="supertype_id"
+              value={formik.values.supertype_id}
               onChange={formik.handleChange}
             >
               {supertypes &&
@@ -128,9 +148,9 @@ function Form() {
             <InputLabel id="rarity-label">Rarity</InputLabel>
             <Select
               labelId="rarity-label"
-              id="Rarity"
-              label="Rarity"
-              value={formik.values.rarity}
+              id="rarity_id"
+              label="rarity_id"
+              value={formik.values.rarity_id}
               onChange={formik.handleChange}
             >
               {rarities &&

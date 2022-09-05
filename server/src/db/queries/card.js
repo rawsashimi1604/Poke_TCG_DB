@@ -166,6 +166,67 @@ function getAllCardsByType(type, qty) {
   }
 }
 
+function getAllCardsBySearch(queryObj) {
+  const whitelist = [
+    "card_name",
+    "set_id",
+    "type_id",
+    "supertype_id",
+    "rarity_id",
+  ];
+
+  // Array to contain WHERE conditions for SQL querying...
+  let where = [];
+  const params = [];
+  let count = 1;
+
+  Object.keys(queryObj).forEach((key) => {
+    // If key is not whitelisted, do not use
+    if (!whitelist.includes(key)) return;
+
+    // If key is an empty string, do not use
+    if ("" === queryObj[key]) return;
+
+    // If key is card_name...
+    if (key === "card_name") {
+      where.push(`${key} LIKE $${count}`);
+      params.push(`%${queryObj[key]}%`);
+    } else {
+      where.push(`${key} = $${count}`);
+      params.push(queryObj[key]);
+    }
+
+    count++;
+  });
+
+  where = where.join(" AND ");
+  if (where) where = `WHERE ${where}`;
+
+  const query = `
+    SELECT json_build_object(
+      'card_id', card.card_id,
+      'card_name', card.card_name,
+      'number', card.number,
+      'set_id', card.set_id,
+      'supertype', supertype.supertype,
+      'artist', card.artist,
+      'hp', card.hp,
+      'rarity', rarity.rarity,
+      'flavor_text', card.flavor_text,
+      'images', json_build_object(
+        'small_img', card.small_img,
+        'large_img', card.large_img
+      )
+    )
+    AS data
+    FROM card
+    LEFT JOIN supertype ON card.supertype_id = supertype.supertype_id 
+    LEFT JOIN rarity ON card.rarity_id = rarity.rarity_id 
+    ${where} 
+  `;
+  return db.query(query, params);
+}
+
 export default {
   getAllCards,
   getCardQuantity,
@@ -173,4 +234,5 @@ export default {
   getById,
   getCardsByQuantity,
   getAllCardsByType,
+  getAllCardsBySearch,
 };
