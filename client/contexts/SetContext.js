@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from "react";
 import axios from "axios";
+import envConfig from "../envConfig";
 
 export const SetContextData = createContext(null);
 
@@ -10,7 +11,7 @@ export function SetContext({ children, setId }) {
   async function fetchSetCards() {
     if (setId) {
       const res = await axios.get(
-        `http://localhost:3000/api/cards/set/${setId}`
+        `${envConfig.API_URL}/api/cards/set/${setId}`
       );
       const pokeCardsData = await res.data;
       setCards(pokeCardsData);
@@ -19,7 +20,7 @@ export function SetContext({ children, setId }) {
 
   async function fetchSetInformation() {
     if (setId) {
-      const res = await axios.get(`http://localhost:3000/api/sets/id/${setId}`);
+      const res = await axios.get(`${envConfig.API_URL}/api/sets/id/${setId}`);
       const pokeCardSetData = await res.data;
       setSet(pokeCardSetData);
     }

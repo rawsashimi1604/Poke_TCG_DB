@@ -1,3 +1,5 @@
+import envConfig from "../envConfig";
+
 export function clientBuildSearchURL(queryObj) {
   let queryString = "/search/cards?";
 
@@ -16,7 +18,7 @@ export function clientBuildSearchURL(queryObj) {
 }
 
 export function serverBuildSearchURL(queryObj) {
-  let queryString = "http://localhost:3000/api/cards/search?";
+  let queryString = `${envConfig.API_URL}/api/cards/search?`;
 
   const keys = Object.keys(queryObj);
   for (let i = 0; i < keys.length; i++) {

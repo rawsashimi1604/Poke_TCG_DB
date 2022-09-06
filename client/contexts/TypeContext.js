@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from "react";
 import axios from "axios";
+import envConfig from "../envConfig";
 
 export const TypeContextData = createContext(null);
 
@@ -8,7 +9,7 @@ export function TypeContext({ children, type, qty }) {
 
   async function fetchPokeCardsByType() {
     const res = await axios.get(
-      `http://localhost:3000/api/cards/type/${type}?quantity=${qty}`
+      `${envConfig.API_URL}/api/cards/type/${type}?quantity=${qty}`
     );
     const cardsData = await res.data;
     setPokeCards(cardsData);
