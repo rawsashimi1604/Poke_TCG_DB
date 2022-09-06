@@ -26,7 +26,10 @@ app.use(morgan("combined"));
 
 // Enable CORS
 const corsOptions = {
-  origin: process.env.NODE_ENV === "production" ? process.env.NEXT_APP_URL : process.env.NEXT_APP_URL_LOCAL,
+  origin:
+    process.env.NODE_ENV === "production"
+      ? process.env.NEXT_APP_URL
+      : process.env.NEXT_APP_URL_LOCAL,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
