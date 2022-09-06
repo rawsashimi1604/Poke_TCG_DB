@@ -67,6 +67,7 @@ Poke TCG DB is a web application made to conveniently access all the information
 - Register for Pokemon TCG API key from [Pokemon TCG API](https://pokemontcg.io/)
 - Clone from github
 - Run `npm install` in `/src` and `/src/client` directory to install both frontend and backend.
+- Create `.env` file, put in root directory. Env file contents will be put below.
 - Install PostgreSQL on your local machine.
 - Create Postgres User 
 - Run `sql/createDatabase.pgsql`
@@ -78,6 +79,21 @@ Poke TCG DB is a web application made to conveniently access all the information
 - Repeat seeding database til sucessful.
 - Run both apps on seperate on the terminal by `npm run dev`
 - Go to http://localhost:5000, next app will be displayed
+
+## Env file contents
+Create `.env` file, put in root directory. Contents:
+```
+PG_USER=<your postgres username>
+PG_PASSWORD=<your postgres password>
+PG_HOST=localhost
+PG_PORT=<your postgres port number>
+PG_DATABASE=poke-tcg-db
+
+POKE_API_TCG_KEY=<your Pokemon TCG API key>
+
+NEXT_APP_URL_LOCAL=http://localhost:5000
+NEXT_APP_URL=<your Vercel domain if you decide to host>
+```
 
 ## Special thanks
 - [Pokemon TCG API](https://pokemontcg.io/)
