@@ -1,5 +1,3 @@
-import dotenv from "dotenv";
-
 export default {
   API_URL:
     process.env.NODE_ENV === "production"
