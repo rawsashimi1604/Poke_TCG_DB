@@ -34,11 +34,6 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 
-console.log(process.env.NODE_ENV);
-console.log(process.env.NEXT_APP_URL);
-console.log(process.env.NEXT_APP_URL_LOCAL);
-console.log(corsOptions.origin);
-
 app.use(cors(corsOptions));
 
 // Routes
