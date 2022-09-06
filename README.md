@@ -1,4 +1,12 @@
-# Poke TCG DB - Web database on your favourite Pokemon TCG Cards!
+<h1 align="center">Poke TCG DB - Web database on your favourite Pokemon TCG Cards!</h1>
+
+<div align="">
+  <img src="https://badgen.net/badge/License/Apache License 2.0/yellow?labelColor=black"/>
+  <img src="https://badgen.net/badge/npm/8.15.0/green?labelColor=black"/>
+  <img src="https://badgen.net/badge/node/16.17.0/green?labelColor=black"/>
+</div>
+
+<br/>
 
 ![Home](./docs/Homepage.png)
 
