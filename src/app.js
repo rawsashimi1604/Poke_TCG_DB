@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-import pokemon from "pokemontcgsdk";
+import dotenv from "dotenv";
 
 import cardRouter from "./routes/card.js";
 import setRouter from "./routes/set.js";
@@ -11,6 +11,11 @@ import supertypeRouter from "./routes/supertype.js";
 
 import ErrorMiddleware from "./middleware/error.js";
 
+// Use .env file...
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -19,7 +24,7 @@ app.use(morgan("combined"));
 
 // Enable CORS
 const corsOptions = {
-  origin: "http://localhost:5000",
+  origin: process.env.NEXT_APP_URL,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
