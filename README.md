@@ -1,5 +1,7 @@
 # Poke TCG DB - Web database on your favourite Pokemon TCG Cards!
 
+![Home](./docs/Homepage.png)
+
 ## About
 Poke TCG DB is a web application made to conveniently access all the information you need on Pokemon TCG Cards at one place. Get the latest cards, card sets and prices from [TCGPlayer](https://www.tcgplayer.com/)! Started this project to learn more about full stack development and SQL in particular.
 
