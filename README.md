@@ -40,6 +40,9 @@ Poke TCG DB is a web application made to conveniently access all the information
 ![ER Diagram](./docs/ER_Diagram.png)
 
 ## API routes
+
+API URL: https://poke-tcg-db.herokuapp.com/
+
 ### Card
 | Type    | Route | Description |
 | ----------   | -------- | -------- | 
